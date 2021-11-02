@@ -1,0 +1,38 @@
+.p-contact-section {
+  background-color: $contact-backcolor;
+}
+
+.p-contact-section__inner {
+  padding-top: rem(70);
+  padding-bottom: rem(70);
+}
+
+.p-contact-section__header {}
+
+
+.p-contact-section__textblock {
+  margin-top: rem(17);
+  @include mq() {
+    margin-top: rem(22);
+    text-align: center;
+  }
+}
+
+.p-contact-section__text {
+  font-size: rem(16);
+  letter-spacing: rem(2);
+  font-weight: $regular;
+  line-height: 1.438;
+  @include mq() {
+    font-size: rem(16);
+    line-height: initial;
+    font-weight: $regular;
+  }
+}
+
+.p-contact-section__btnblock {
+  background-color: $background-accent;
+  @include mq() {
+    @include hover__left-to-right($text-inverted-color, $background-inverted-color);
+  }
+}

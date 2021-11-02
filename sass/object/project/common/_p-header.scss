@@ -1,0 +1,159 @@
+.p-header {
+  z-index: $layer-header;
+  height: rem(50);
+  background-color: rgba($color: $background-accent, $alpha: 0.5)
+}
+
+.p-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: inherit;
+}
+
+.p-header-logo {
+  margin-left: rem(22);
+  z-index: $layer-modal;
+  height: inherit;
+  @include mq() {
+    margin-left: rem(33);
+  }
+}
+
+.p-header-logo a {
+  height: inherit;
+  font-size: rem(16);
+}
+
+
+.p-header__menu {
+  z-index: $layer-modal;
+  height: inherit;
+  @include mq() {
+    display: none;
+  }
+}
+
+.p-header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $layer-drawer;
+  width: 100%;
+  height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  @include mq() {
+    position: static;
+    width: initial;
+    height: inherit;
+    overflow: initial;
+  }
+  &.is-open {
+    height: 100vh;
+  }
+}
+
+.p-header-nav__container {
+  margin-top: rem(100);
+  text-align: center;
+  @include mq() {
+    height: inherit;
+    display: flex;
+    margin-top: initial;
+  }
+}
+
+.g-nav__list {
+  z-index: $layer-header;
+  @include mq() {
+    height: inherit;
+    display: flex;
+  }
+}
+
+.g-nav__item {
+  @include mq() {
+    margin-top: initial;
+    height: inherit;
+  }
+}
+
+.p-header-nav__item--contact{
+  @include mq() {
+    background-color: $background-inverted-color;
+    color: $text-inverted-color;
+    margin-right: 0;
+    margin-left: rem(15);
+  }
+}
+
+.g-nav__link {
+  display: inline-block;
+  width: 100%;
+  font-size: rem(16);
+  font-weight: $regular;
+  letter-spacing: rem(2);
+  padding: rem(15) 0;
+  @include mq() {
+    line-height: 2.1875;
+    padding: 0 rem(15);
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.p-header-nav__link--contact{
+  @include mq() {
+    padding: 0 rem(30);
+  }
+}
+
+.p-header-nav__contact {
+  @include mq() {
+    margin-top: initial;
+    margin-left: rem(15);
+    height: inherit;
+    background-color: $background-inverted-color;
+    color: $text-inverted-color;
+  }
+}
+
+.p-header-nav__btn {
+  display: inline-block;
+  padding: rem(15) 0;
+  width: 100%;
+  @include mq() {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 rem(30);
+    @include hover__left-to-right($text-color, $background-accent);
+  }
+}
+
+.p-header-nav__circle-background {
+  position: fixed;
+  content: "";
+  top: rem(-50);
+  right: rem(-50);
+  z-index: $layer-background;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba($color: $background-accent, $alpha: 0.9);
+  transition: all 0.5s;
+
+&.is-open {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}

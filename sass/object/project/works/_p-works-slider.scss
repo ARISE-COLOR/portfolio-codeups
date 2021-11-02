@@ -1,0 +1,84 @@
+.p-works-slider__inner {
+  max-width: rem(800);
+  margin: 0 auto;
+
+}
+
+.p-works-slider__container--main {
+  overflow: hidden;
+  position: relative;
+
+}
+
+.p-works-slider__wrapper--main {
+}
+
+
+.p-works-slider__img--main {
+  position: relative;
+  width: 100%;
+  padding-top: 62.5%;
+  @include mq() {
+    padding-top:62.5%;
+  }
+}
+
+.p-works-slider__img--main img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: $pagination-backcolor;
+  border-radius: 50%;
+  width: rem(50);
+  height: rem(50);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: rem(30);
+  color: $pagination-color;
+}
+
+
+.p-works-slider__container--thumbnail {
+  overflow: hidden;
+  margin-top: rem(10);
+
+}
+
+.p-works-slider__wrapper--thumbnail {
+
+}
+
+
+.p-works-slider__img--thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 20%;
+  opacity: 0.5;
+  @include mq() {
+    padding-top: 20%;
+  }
+}
+
+
+.p-works-slider__img--thumbnail.swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.p-works-slider__img--thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

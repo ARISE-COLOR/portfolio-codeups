@@ -16,6 +16,10 @@ button {
 	appearance: none;
 }
 
+input::placeholder{
+ color:rgba($color: $gray, $alpha: 0.4);
+}
+
 input[type="date"],
 input[type="datetime-local"],
 input[type="month"],
@@ -38,17 +42,16 @@ input[type="datetime"],
 input[type="week"],
 textarea,
 select {
-	margin-right: 0;
-	margin-left: 0;
-	padding: 4px;
+	padding: rem(4);
 	border: 1px solid #ccc;
 	border-radius: 0;
 	outline: none;
-	background: none;
-	font-size: 16px;
+	background: $white;
+	font-size: rem(16);
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+  width: 100%;
 }
 
 textarea {
@@ -104,11 +107,14 @@ input[type="checkbox"] + span {
 	position: relative;
 	margin-left: 8px;
 	padding: 10px 20px;
-	color: #555;
-	font-size: 1.4rem;
+	color: rgba($color: $text-color, $alpha: 0.8);
+	font-size: rem(18);
 	text-align: center;
 	line-height: 1;
 	cursor: pointer;
+  @include mq() {
+    font-size: rem(24);
+  }
 }
 input[type="radio"] + span::before,
 input[type="checkbox"] + span::before {
@@ -139,16 +145,17 @@ input[type="button"],
 button {
 	display: inline-block;
 	margin: 0;
-	padding: 10px 30px;
-	border: 1px solid #999;
+	// padding: 10px 30px;
+	// border: 1px solid #999;
 	border-radius: 0;
 	-webkit-box-sizing: content-box;
 	-webkit-appearance: button;
 	appearance: button;
-	background: #efefef;
+	background: $white;
 	color: #000;
-	font-size: 20px;
+	font-size: rem(20);
 	cursor: pointer;
+  transition: .3s;
 }
 
 /* ブラウザ対策
@@ -207,7 +214,7 @@ select:hover {
 
 input[type="radio"] + span:hover,
 input[type="checkbox"] + span:hover  {
-	color: #000;
+	color: rgba($color: $text-color, $alpha: 1.0);
 }
 input[type="radio"] + span:hover::before,
 input[type="checkbox"] + span:hover::before {
@@ -258,9 +265,11 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover {
-	border-color: #3498db;
-	background: #3498db;
-	color: #fff;
+  @include mq() {
+    border-color: #3498db;
+    background: #3498db;
+    color: #fff;
+  }
 }
 
 /* focus */
@@ -280,8 +289,9 @@ input:disabled,
 input:disabled:hover,
 textarea:disabled,
 textarea:disabled:hover {
-	border-color: #ccc;
-	background: #eee;
+	// border-color: #aaa;
+	background: $background-accent;
+  color: rgba($color: $text-color, $alpha: 0.8);
 	cursor: not-allowed;
 }
 input[type="radio"]:disabled + span,

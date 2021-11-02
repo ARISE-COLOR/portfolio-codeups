@@ -1,0 +1,74 @@
+//入力フォーム
+.p-contact-form__table {
+  margin: 0 auto;
+  font-size: rem(16);
+  border-spacing: 0 rem(32);
+  @include mq() {
+    border-spacing: 0 rem(42);
+  }
+}
+
+.p-contact-form__table tr {
+  position: relative;
+}
+
+.p-contact-form__table th {
+  position: initial;
+  width: rem(200);
+  text-align: left;
+  @include mq() {
+    position:absolute;
+    left: rem(-210);
+    text-align: right;
+    padding: rem(4) 0;
+  }
+}
+.p-contact-form__table th > span {
+  color: $red;
+}
+
+.p-contact-form__table td {
+  max-width: rem(540);
+  width: 100%;
+}
+
+//確認画面
+.mw_wp_form_preview .p-contact-form__table{
+  max-width: rem(540);
+  width: 100%;
+}
+
+.mw_wp_form_preview .p-contact-form__table td{
+  border: 2px solid $white;
+  background-color: rgba($color: $background-accent, $alpha: 0.5);
+  display: list-item;
+  list-style:outside;
+  padding: rem(4);
+  color: cornflowerblue;
+}
+
+.mw_wp_form_preview .p-contact-form__td::marker{
+  color: rgba($color: $background-inverted-color, $alpha: 0);
+}
+
+.mw_wp_form_preview .p-contact-privacy__text,
+.mw_wp_form_preview .p-contact-privacy__check {
+    display: none;
+}
+
+
+
+
+//エラー出力
+.p-contact__error {
+  color: $red;
+  text-align: center;
+  margin-top: rem(30);
+  display: none;
+}
+
+.p-contact-form__td.is-error {
+  &>input {
+    background-color: rgba($color: $error-color, $alpha: 1.0);
+  }
+}

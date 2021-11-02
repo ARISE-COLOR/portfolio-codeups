@@ -1,0 +1,23 @@
+.p-content{}
+
+.p-content__inner{}
+
+.p-content__title{
+  font-size: rem(36);
+  font-weight: $medium;
+  text-align: center;
+}
+
+.p-content__textblock {
+  margin-top: rem(30);
+  padding: 0 rem(10);
+  @include mq() {
+    padding: 0 rem(50);
+  }
+}
+
+.p-content__text {
+  font-size: rem(18);
+  font-size: $regular;
+  line-height: 2;
+}

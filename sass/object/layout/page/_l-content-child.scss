@@ -1,0 +1,15 @@
+.l-content-child {
+  margin-top: rem(50);
+  @include mq() {
+    margin-top: rem(30);
+  }
+}
+
+.l-content-child__item{
+  &:nth-child(n+2) {
+    margin-top: rem(100);
+    @include mq(){
+      margin-top: rem(80);
+    }
+  }
+}

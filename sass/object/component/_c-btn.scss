@@ -1,0 +1,84 @@
+.c-btn {
+    //共通スタイル
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: inherit;
+    font-size: rem(20);
+    letter-spacing: rem(2);
+    // padding: rem(9) 0;
+    border: rem(1) solid $white;
+    @include mq() {
+      font-size: rem(16);
+      // padding: rem(16) 0;
+    }
+}
+
+.c-btn__effect--neon {
+  background-color: rgba($color: $black, $alpha: 0.5);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  transition: 1s;
+  overflow: hidden;
+}
+.c-btn__effect--neon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  background-color: #00ccff;
+  transition: 1s;
+  animation: neonButtonAnimate 2s linear infinite;
+}
+
+.c-btn__effect--neon:hover:before {
+  @include mq(){
+    height: 100%;
+  }
+}
+
+@keyframes neonButtonAnimate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.c-btn__effect--neon:hover {
+  @include mq() {
+    background-color: #00ccff;
+    box-shadow: 0 0 10px #00ccff,
+    0 0 30px #00ccff,
+    0 0 60px #00ccff,
+    0 0 100px #00ccff;
+  }
+}
+
+.c-btn__effect--neon::after {
+  position: absolute;
+  content: "";
+  inset: rem(4);
+  background-color: $gray;
+  transition: 0.5s;
+}
+
+.c-btn__effect--neon:hover:after {
+  @include mq(){
+    background-color: #00ccff;
+  }
+}
+
+.c-btn__effect--neon span {
+  position: relative;
+  z-index: 1;
+  color: $white;
+}
+
+.c-btn__effect--neon:hover span {
+}

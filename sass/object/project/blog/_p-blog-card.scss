@@ -1,0 +1,134 @@
+.p-blog-card {
+  width: 100%;
+  position: relative;
+}
+
+
+.p-blog-card__link:hover {
+  .p-blog-card__img::after {
+    @include mq() {
+      top: 0;
+      height: 140%;
+    }
+  }
+  .p-blog-card__wrapper {
+    @include mq() {
+      background-color: $background-accent;
+      color: $text-color;
+    }
+  }
+}
+
+.p-blog-card__img {
+  position: relative;
+  width: 100%;
+  padding-top: 62.5%;
+  z-index: 1;
+  overflow: hidden;
+  @include mq() {
+    padding-top: 62.5%;
+  }
+}
+
+.p-blog-card__img:hover {
+  transition: 0.5s;
+}
+
+.p-blog-card__img::after {
+  position: absolute;
+  content: "";
+  bottom: -30%;
+  left: -5%;
+  z-index: 5;
+  width: 110%;
+  height: 0;
+  background-color: rgba($color: $image-filter, $alpha: 0.1);
+  transform-origin: (left bottom);
+  transform: skewY(-10deg) scale(1,1);
+  transition: .5s;
+}
+
+.p-blog-card__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-blog-card__wrapper {
+  background-color: $blogcard-textarea;
+  color: $text-inverted-color;
+  padding: rem(4) rem(23) rem(16);
+  transition: all .3s;
+  @include mq() {
+  }
+}
+
+
+.p-blog-card__title {
+  font-size: rem(18);
+  font-weight: $medium;
+  letter-spacing: rem(1);
+  line-height: 1.9;
+}
+
+.p-blog-card__text {
+  font-size: rem(14);
+  font-weight: $regular;
+  letter-spacing: rem(1);
+  line-height: 1.85;
+  @include mq() {
+    line-height: 1.95;
+  }
+}
+
+.p-blog-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: rem(8);
+  font-size: rem(14);
+  font-weight: $regular;
+  letter-spacing: rem(1);
+  line-height: 1.85;
+  @include mq() {
+    margin-top: rem(9);
+  }
+}
+
+.p-blog-card__category {
+  background-color: $category-color;
+  color: $text-inverted-color;
+  padding: rem(0) rem(3);
+  @include mq() {
+    padding: rem(0) rem(5);
+  }
+}
+
+.p-blog-card__date {
+}
+
+
+
+.p-blog-card__mark {
+  position: absolute;
+  top: rem(-16);
+  left: rem(-15);
+  z-index: 10;
+}
+
+.p-blog-card__new {
+  background-color: $newmark-color;
+  color: $text-inverted-color;
+  font-size: rem(16);
+  font-weight: $regular;
+  letter-spacing: rem(2);
+  text-transform: capitalize;
+  width: rem(60);
+  height: rem(60);
+  border-radius: 50%;
+  text-align: center;
+  line-height: rem(60);
+}

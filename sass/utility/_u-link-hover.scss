@@ -1,0 +1,5 @@
+.u-link-hover__nav {
+  @include mq() {
+    @include link-hover($navhover-color)
+  }
+}

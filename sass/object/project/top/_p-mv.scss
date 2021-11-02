@@ -1,0 +1,54 @@
+.p-mv-para {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-mv-para::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: rem(100);
+  background: linear-gradient(to top, $background, transparent);
+  z-index: 10;
+}
+
+.p-mv-para::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $background;
+  opacity: 0.5;
+  z-index: 5;
+  mix-blend-mode: color;
+}
+
+.p-mv-para img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+
+.c-mv__title {
+  position: relative;
+  color: $text-color;
+  font-size: rem(100);
+  z-index: 1;
+}
+
+#road {
+  z-index: 2;
+}

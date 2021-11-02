@@ -41,7 +41,7 @@ body {
 	line-height: $lh;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background: $background;
+	background-color: $background;
 	overflow-wrap: break-word;
 	min-height: 100vh;
 	min-height: -webkit-fill-available;
@@ -165,20 +165,9 @@ ol {
 	list-style: none;
 }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 100%;
-	table-layout: fixed;
-	border: 1px solid;
-}
-
 th,
 td {
-	padding: 4px 6px;
-	text-align: left;
-	vertical-align: top;
-	border: 1px solid;
+  display: block;
 }
 
 blockquote,

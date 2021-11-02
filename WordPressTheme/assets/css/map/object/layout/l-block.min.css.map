@@ -1,0 +1,1 @@
+{"version":3,"sources":["object/layout/l-block.scss","object/layout/l-block.css"],"names":[],"mappings":"AAAA,SCCC,WDAC","file":"../../../object/layout/l-block.min.css","sourcesContent":[".l-block {\r\n  margin-top: rem(50);\r\n}",".l-block {\n  margin-top: rem(50);\n}\n"]}

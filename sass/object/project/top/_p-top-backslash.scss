@@ -1,0 +1,31 @@
+.p-top-backslash__first {
+  z-index: -5;
+  position: absolute;
+  top: rem(20);
+  left: 0;
+  width: 100%;
+  height: rem(679);
+  background: linear-gradient(to top right, transparent, transparent 49.9%, $backslash-color 50%, $backslash-color 50%, transparent 50.1%, transparent );
+  @include mq() {
+    top: rem(-60);
+    // max-width: rem(1211);
+    width: 100%;
+    height: rem(1211);
+  }
+}
+
+.p-top-backslash__second {
+  z-index: -5;
+  position: absolute;
+  top: rem(200);
+  left: 0;
+  width: 100%;
+  height: rem(1398);
+  background: linear-gradient(to top left, transparent, transparent 49.9%, $backslash-color 50%, $backslash-color 50%, transparent 50.1%, transparent );
+  @include mq() {
+    top: rem(680);
+    // max-width: rem(1210);
+    width: 100%;
+    height: rem(1210);
+  }
+}

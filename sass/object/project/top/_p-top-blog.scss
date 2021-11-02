@@ -1,0 +1,16 @@
+.p-top-blog {}
+
+.p-top-blog__inner {}
+
+.p-top-blog__header {}
+
+.p-top-blog__body {}
+
+.p-top-blog__list {}
+
+.p-top-blog__btnblock {
+  background-color: $background-accent;
+  @include mq() {
+    @include hover__left-to-right($text-inverted-color, $background-inverted-color);
+  }
+}

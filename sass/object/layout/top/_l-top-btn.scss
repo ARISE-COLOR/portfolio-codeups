@@ -1,0 +1,18 @@
+.l-top-btn__center {
+  margin-top: rem(28);
+  margin-left: auto;
+  margin-right: auto;
+  height: rem(50);
+  @include mq() {
+    max-width: rem(360);
+  }
+}
+
+.l-top-btn__left {
+  margin-top: rem(28);
+  margin-left: 0;
+  height: rem(50);
+  @include mq() {
+    max-width: rem(360);
+  }
+}

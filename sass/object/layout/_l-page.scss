@@ -1,0 +1,6 @@
+.l-page {
+  margin-top: rem(40);
+  @include mq() {
+    margin-top: rem(60);
+  }
+}

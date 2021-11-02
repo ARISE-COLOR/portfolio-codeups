@@ -1,0 +1,63 @@
+.p-overview {
+  overflow: hidden;
+}
+
+.p-overview__list {
+  padding: rem(10) rem(15);
+  @include mq() {
+    display: flex;
+    padding: rem(10) rem(50);
+  }
+}
+
+.p-overview__title {
+  position: relative;
+  width: 100%;
+  padding: rem(2) 0 rem(2) rem(15);
+  font-size: rem(16);
+  @include mq() {
+    width: 20%;
+    padding: rem(20) 0 rem(5);
+    font-size: rem(18);
+  }
+}
+
+.p-overview__title::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: rem(10);
+  height: rem(2);
+  background-color: $navhover-color;
+  @include mq() {
+    top: initial;
+    transform: none;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.p-overview__text {
+  position: relative;
+  width: 100%;
+  padding: rem(5) 0 rem(5);
+  font-size: rem(16);
+  // border-bottom: rem(2) solid $white;
+  @include mq() {
+    width: 80%;
+    padding: rem(20) 0 rem(5);
+    font-size: rem(18);
+  }
+}
+
+.p-overview__text::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: rem(2);
+  background-color: $white;
+}

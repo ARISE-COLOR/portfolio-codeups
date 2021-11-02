@@ -1,0 +1,39 @@
+.wp-pagenavi {
+	clear: both;
+	text-align:center;
+
+}
+.wp-pagenavi a, .wp-pagenavi span {
+	color: $text-color;
+  font-size: rem(12);
+	background-color: $background-accent;
+  margin: 0 rem(6);
+	padding: rem(6) rem(10);
+	white-space: nowrap;
+	transition: 0.2s ease-in-out;
+	text-align: center;
+	text-decoration: none;
+	border: thin dotted $text-color;
+  @include mq() {
+    font-size: rem(16);
+    margin: 0 rem(10);
+    padding: rem(8) rem(14);
+  }
+}
+
+.wp-pagenavi .previouspostslink,
+.wp-pagenavi .nextpostslink {
+  display: none;
+  @include mq() {
+    display: initial;
+  }
+}
+
+.wp-pagenavi a:hover{
+	color: $background-accent;
+	background-color: $text-color;
+    }
+.wp-pagenavi span.current{
+	color: $background-accent;
+	background-color: $text-color;
+    }

@@ -1,0 +1,18 @@
+/*テキストがほのかに光りながら出現*/
+.js-glowAnime span{
+  opacity: 0;
+  @include mq() {
+    opacity: 1;
+  }
+}
+.js-glowAnime.u-glowAnime span{
+  animation:glow_anime_on 1s ease-out forwards;
+}
+
+@keyframes glow_anime_on{
+	0% { opacity: 0; text-shadow: 0 0 0 #fff,0 0 0 #fff;}
+  20% {opacity: 0; text-shadow: 0 0 0 #fff,0 0 0 #fff;}
+	50% { opacity: 1;text-shadow: 0 0 10px #fff,0 0 15px #fff; }
+	90% { opacity: 1; text-shadow: 0 0 0 #fff,0 0 0 #fff;}
+  100% {opacity: 1; text-shadow: none;}
+}

@@ -1,0 +1,16 @@
+.p-top-news {}
+
+.p-top-news__inner {}
+
+.p-top-news__btnblock {
+  background-color: $background-accent;
+  @include mq() {
+    @include hover__left-to-right($text-inverted-color, $background-inverted-color);
+  }
+}
+
+
+
+
+
+

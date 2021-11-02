@@ -1,0 +1,15 @@
+.p-blog-cards {
+  @include mq() {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: rem(25);
+  }
+}
+
+.p-blog-cards__item:nth-child(n + 2) {
+  margin-top: rem(23);
+  @include mq() {
+    margin-top: initial;
+  }
+}
+

@@ -1,0 +1,54 @@
+.c-drawer-menu,
+.c-drawer-menu span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.c-drawer-menu {
+  position: relative;
+  width: rem(50);
+  height: rem(50);
+  background: none;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 0 rem(30);
+}
+.c-drawer-menu span {
+  position: absolute;
+  left: 0;
+  width: 70%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.c-drawer-menu span:nth-of-type(1) {
+  top: 25%;
+  left: 50%;
+  transform: translate3d(-50%, -25%, 0);
+}
+.c-drawer-menu span:nth-of-type(2) {
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.c-drawer-menu span:nth-of-type(3) {
+  top: 75%;
+  left: 50%;
+  transform: translate3d(-50%, -75%, 0);
+}
+.c-drawer-menu.active span:nth-of-type(1) {
+  top: 50%;
+  transform: translate3d(-50%, -50% ,0) rotate(-315deg) scale(.8);
+}
+.c-drawer-menu.active span:nth-of-type(2) {
+  width: rem(50);
+  height: rem(50);
+  background-color: transparent;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+.c-drawer-menu.active span:nth-of-type(3) {
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0) rotate(315deg) scale(.8);
+}

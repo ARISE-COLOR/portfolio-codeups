@@ -1,0 +1,31 @@
+.p-category__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.p-category__list >li:nth-child(n+1) {
+  margin-left: rem(30);
+}
+
+.p-category__item {
+}
+
+.p-category__link{
+  opacity: 0.3;
+  padding: rem(8) rem(10);
+}
+
+.p-category__link--all {
+  background-color: $background-inverted-color;
+  color: $text-inverted-color;
+}
+
+
+.p-category__link.current{
+  opacity: 1;
+}
+
+.p-category__link:hover {
+  opacity: 1;
+  transition: 0.3s;
+}

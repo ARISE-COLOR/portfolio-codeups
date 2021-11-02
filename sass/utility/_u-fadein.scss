@@ -1,0 +1,16 @@
+.u-fadeIn{
+  animation-name: fadeInAnime;
+  animation-duration:2s;/*ゆっくり出現するため数値変更*/
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  
+  @keyframes fadeInAnime{
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }

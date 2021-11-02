@@ -1,0 +1,19 @@
+.p-footer{}
+
+.p-footer__inner{}
+
+.p-footer__container {
+  @include mq() {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.p-footer__contact {
+  width: 30%;
+
+}
+
+.p-footer__nav {
+  flex: 1;
+}

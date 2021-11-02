@@ -1,0 +1,31 @@
+//送信ボタン
+.p-contact-submit {
+  margin-top: rem(40);
+  text-align: center;
+  @include mq() {
+    // display: flex;
+    margin-top: rem(30);
+  }
+}
+
+.p-contact-submit__btn--send,
+.p-contact-submit__btn--back {
+  max-width: rem(500);
+  width: 80%;
+  padding: rem(15);
+  font-size: rem(20);
+  @include mq() {
+    width: rem(240);
+  }
+}
+
+.p-contact-submit__btn--send {
+  border: 2px solid #3498db;
+    margin-top: rem(20);
+    &:disabled {
+      border: 2px solid $text-color;
+    }
+}
+.p-contact-submit__btn--back {
+  border: 2px solid $red;
+}

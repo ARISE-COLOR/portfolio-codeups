@@ -2,7 +2,7 @@
 .u-hidden-pc {
 	// PC時に非表示
 
-	@include mq("pc") {
+	@include mq() {
 		display: none;
 	}
 }

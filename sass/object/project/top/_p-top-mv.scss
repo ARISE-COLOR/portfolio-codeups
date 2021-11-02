@@ -1,0 +1,92 @@
+.p-top-mv {
+  position: relative;
+}
+
+//画像の下部をぼかす処理
+.p-top-mv::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: rem(150);
+  background: linear-gradient(to top, $background, transparent);
+  z-index: $layer-up;
+}
+
+.p-top-mv__swiper-container {
+  overflow: hidden;
+}
+
+.p-top-mv__swiper-wrapper {}
+
+.p-top-mv__swiper-slide {}
+
+.p-top-mv__slide-img {}
+
+//画像に20％の黒を重ねる
+.p-top-mv__slide-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba($color: $background, $alpha: 0.2);
+}
+
+.p-top-mv__slide-img img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes zoomUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+.swiper-slide-active .p-top-mv__slide-img,
+.swiper-slide-duplicate-active .p-top-mv__slide-img,
+.swiper-slide-prev .p-top-mv__slide-img {
+  animation: zoomUp 10s linear 0s 1 normal both;  
+}
+
+.p-top-mv__titlebox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+  // パーフェクトピクセル調整
+  // padding-left: rem(2);
+}
+
+.p-top-mv__title {
+  font-size: rem(28);
+  // font-weight: $bold;
+  letter-spacing: rem(0.45);
+  @include mq() {
+    font-size: rem(50);
+    letter-spacing: rem(0.5);
+    line-height: 1;
+  }
+}
+
+.p-top-mv__subtitle {
+  font-size: rem(20);
+  // font-weight: $bold;
+  letter-spacing: rem(0.5);
+  margin-top: rem(13);
+  @include mq() {
+    margin-top: rem(24);
+    font-size: rem(25);
+    line-height: 1;
+  }
+}

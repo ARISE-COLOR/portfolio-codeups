@@ -1,0 +1,1 @@
+{"version":3,"sources":["object/project/overview/p-overview.scss","object/project/overview/p-overview.css"],"names":[],"mappings":"AAAA,kBCCC,QDAC","file":"../../../../object/project/overview/p-overview.min.css","sourcesContent":[".p-overview__item {\r\n  display: flex;\r\n}",".p-overview__item {\n  display: flex;\n}\n"]}

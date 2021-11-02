@@ -1,0 +1,66 @@
+//メール送信のタイムライン
+.p-contact-step {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-contact-step__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-contact-step__icon {
+  display: flex;
+  width: rem(50);
+  height: rem(50);
+  background-color: $background-accent;
+  border-radius: 50%;
+  border: rem(1) solid $text-color;
+  justify-content: center;
+  align-items: center;
+  font-size: rem(20);
+}
+
+.p-contact-step__text {
+  font-size: rem(14);
+  @include mq() {
+    font-size: rem(16);
+  }
+}
+
+.p-contact-step > li:nth-of-type(n + 2) {
+  margin-left: rem(50);
+  @include mq() {
+    margin-left: rem(100);
+  }
+}
+
+.p-contact-step > li:nth-of-type(n + 2)::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: rem(-40);
+  width: rem(20);
+  height: rem(20);
+  border-top: 2px solid $white;
+  border-left: 2px solid $white;
+  transform: translateY(-50%) rotate(135deg); 
+  @include mq() {
+    left: rem(-70);
+  }
+}
+
+
+.mw_wp_form_input .p-contact-step > li:nth-of-type(1),
+.mw_wp_form_preview .p-contact-step > li:nth-of-type(2),
+.mw_wp_form_complete .p-contact-step > li:nth-of-type(3) {
+    &>.p-contact-step__icon {
+      background-color: $pagination-color;
+      color: $text-inverted-color;
+    }
+}

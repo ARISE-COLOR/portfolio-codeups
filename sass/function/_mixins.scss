@@ -7,3 +7,76 @@
 		@content;
 	}
 }
+
+ //左から右へスワイプ ホバーアウト時右へ抜けるエフェクト
+ @mixin hover__left-to-right($fontcolor, $backgroundcolor) {
+  position: relative;
+  z-index: 1;
+  &:hover {
+    color: $fontcolor;
+    transition: all .3s;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: $backgroundcolor;
+    transition: all .3s;
+  }
+  &:hover::after {
+    left: 0;
+    width: 100%;
+  }
+}
+
+//上から下へ
+@mixin hover__top-to-bottom($fontcolor, $backgroundcolor) {
+  position: relative;
+  z-index: 1;
+  &:hover {
+    color: $fontcolor;
+    transition: all .3s;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: $backgroundcolor;
+    transition: all .3s;
+  }
+  &:hover::after {
+    left: 0;
+    width: 100%;
+  }
+}
+
+//リンクホバー時、文字下に線が中央から広がるエフェクト
+@mixin link-hover($line-color) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: rem(8);
+    left: 50%;
+    content: '';
+    width: 0;
+    height: 1px;
+    background-color: $line-color;
+    transition: .3s;
+    transform: translateX(-50%);
+  }
+
+  &:hover::after {
+    width: 75%;
+  }
+}
+
+

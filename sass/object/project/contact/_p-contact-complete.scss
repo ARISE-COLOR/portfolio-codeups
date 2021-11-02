@@ -1,0 +1,12 @@
+//送信完了画面
+.p-contact-complete {
+  margin: rem(30) auto 0;
+  padding: 0 rem(20);
+  width: 100%;
+  text-align: left;
+  font-size: rem(16);
+  line-height: 1.8;
+  @include mq() {
+    font-size: rem(24);
+  }
+}

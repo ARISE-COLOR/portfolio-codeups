@@ -1,21 +1,59 @@
 // 色
-$background: #fff; // 背景
-$text-color: #333; // テキスト色
+$black: #111;
+$white: #fff;
+$red: #FF5757;
+$error-color: #FFDCDC;
+$gray: #333333;
+$background: #111;
+$background-accent: #333333;
+$background-inverted-color: #fff;
+$text-color: #fff;
+$text-inverted-color: #333333;
+$image-filter: #FFEA2E;
+$blogcard-textarea: #fff;
+$contact-backcolor: #3D3D3D;
+$newmark-color: #FFBA6A;
+$category-color :#FFEA2E;
+$navhover-color :#FFEA2E;
+$required-color: #FFDCDC;
+$title-color: #F9F871;
+$backslash-color: #F9F871;
+$pagination-color: #F9F871;
+$pagination-backcolor: #333333;
 
 // マウスホバー
 $opacity: 0.7; // 透過度
 
+//z-index
+$layer-modal: 100;
+$layer-drawer: 40;
+$layer-floating: 30;
+$layer-header: 20;
+$layer-footer: 10;
+$layer-up: 2;
+$layer-default: 1;
+$layer-background: -1;
+
+
 // フォント
-$font-family-base: "";// ベースフォント
+$font-family-base: "Noto Sans JP", "sans-serif";;// ベースフォント
+$font-family-sub: "Noto Serif JP", "serif";//サブフォント
 $font-size-base: 16px; // ベースフォントサイズ
 $font-weight-base: 400; // ベースフォントウェイト
 $lh: 1.6; // ベース行間
+
+/* font-weight */
+$light: 300;
+$regular:400;
+$medium: 500;
+$bold: 700;
+
 
 // ---
 // レイアウト
 // ---
 $l-tab: 768px; // タブレットサイズ
-$l-inner: 1000px; // インナー幅
+$l-inner: 1100px; // インナー幅
 $l-pc: 1440px; // パソコン幅
 
 // ブレークポイント（PC基準）
