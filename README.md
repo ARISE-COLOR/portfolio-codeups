@@ -1,6 +1,7 @@
 # Web制作アライズカラーのサンプルサイトコードです。
 
 
+## サンプルサイト１のファイルです。
 - WordPressThemeは必要に応じて変更してください
 	- WordPressTheme
 	- sass
@@ -8,9 +9,6 @@
 	- package.json
 	- .gitignore
 	- index.php
-
-## JSの記述
-- assets内のjsフォルダ内で直書きする
 
 
 ## 画像
