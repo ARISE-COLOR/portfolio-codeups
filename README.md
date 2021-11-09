@@ -1,4 +1,4 @@
-# wp-flocss-rem-fromSPの使い方
+# Web制作アライズカラーのサンプルサイトコードです。
 
 
 - WordPressThemeは必要に応じて変更してください
