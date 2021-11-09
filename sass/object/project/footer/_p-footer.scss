@@ -1,0 +1,33 @@
+.p-footer{}
+
+.p-footer__inner{}
+
+.p-footer__container {
+
+  @include mq() {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.p-footer__contact {
+  @include mq() {
+    width: 25%;
+    border-right:1px solid $text-color ;
+  }
+
+}
+
+.p-footer__navigation {
+  flex: 1;
+}
+
+.p-footer-copyright {
+  text-align: center;
+}
+
+.p-footer__sns {
+  @include mq() {
+    // width: 20%;
+  }
+}

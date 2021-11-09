@@ -1,12 +1,14 @@
-.p-content-child__item {
+.p-content-child__list li:nth-child(even) {
+  .p-content-child__body {
+    flex-direction: row-reverse;
+  }
+}
 
+.p-content-child__body {
   @include mq() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &:nth-child(even) {
-      flex-direction: row-reverse;
-      }
   }
 }
 

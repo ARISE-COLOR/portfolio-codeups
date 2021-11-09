@@ -30,17 +30,17 @@
 </div>
 
 
-<section class="l-works p-works">
+<article class="l-works p-works">
   <div class="p-works__inner l-inner">
     <ul class="p-works__list">
 
       <?php
-
       $terms_obj = get_queried_object(); //現在のタクソノミー情報取得
       $terms_slug = $terms_obj->slug; //現在のタクソノミーslug取得
       $paged = get_query_var('paged') ? get_query_var('paged') : 1;
       $query_args = array(
         'post_type' => 'works',
+        'post_status' => 'publish', 
         'posts_per_page' => 6,
         'paged' => $paged,
         'tax_query' => array(
@@ -57,25 +57,35 @@
           get_template_part('content-archive-works');
         endwhile;
       else :
-        //記事が存在しなかった場合
-        echo '<li class="p-works__item">';
-        echo '<div>ただいま記事を準備中です。<br>少々お待ちください。</div>';
-        echo '</li>';
+        ?>
+        <!-- 記事が存在しなかった場合 -->
+        <li class="p-works__item">
+          <div>ただいま記事を準備中です。<br>少々お待ちください。</div>
+        </li>
+      <?php
       endif;
       ?>
     </ul>
   </div>
-</section>
-
+</article>
 
 <!-- ページネーション -->
-<div class="l-pagenavi p-pagenavi">
-  <?php
-  if (function_exists('wp_pagenavi')) :
-    wp_pagenavi(array('query' => $the_query));
-  endif;
-  wp_reset_postdata();
+<!-- WP-PageNaviを使った場合の記述 -->
+<!-- <div class="l-pagenavi p-pagenavi"> -->
+<?php
+  // if(function_exists('wp_pagenavi')):
+  //   wp_pagenavi(array('query'=>$the_query)); 
+  // endif;
   ?>
-</div>
+<!-- </div> -->
+
+<!-- ページネーション -->
+<!-- the_posts_paginationを使った場合の記述 -->
+<?php original_pagenation($the_query->max_num_pages); ?>
+
+<?php wp_reset_postdata(); ?>
+
+<!-- お問い合わせセクション表示 -->
+<?php get_template_part('content-contact'); ?>
 
 <?php get_footer(); ?>

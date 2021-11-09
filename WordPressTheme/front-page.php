@@ -1,8 +1,12 @@
 <?php get_header(); ?>
 
 <!-- 記事見出し-->
-<article id="top-news" class="l-top-section p-top-news">
-  <div class="p-top-news__inner l-inner p-newsBlock">
+<section id="top-news" class="l-top-section p-top-news js-fadeInTrigger">
+  <h2 class="p-top-content__header p-section-header l-inner">
+    <span class="p-section-header__title--en">news</span>
+    <span class="p-section-header__title--ja">お知らせ</span>
+  </h2>
+  <article class="p-top-news__inner l-inner p-newsBlock">
     <ul class="p-newsBlock__list">
 
       <?php
@@ -13,28 +17,20 @@
         'posts_per_page' => 5
       );
       $the_query = new WP_Query($query_args);
+
       if ($the_query->have_posts()) :
         //記事が存在した場合
         while ($the_query->have_posts()) :
-          $the_query->the_post(); //ループのインクリメントの役割、これがないと無限ループになるので注意
-      ?>
-
-          <li class="p-newsBlock__item">
-            <div class="p-newsBlock__header">
-              <time class="p-newsBlock__date"><?php echo get_the_modified_date('Y.m.d', $post->ID); ?></time>
-              <div class="p-newsBlock__category"><?php the_category(); ?></div>
-            </div>
-            <div class="p-newsBlock__titleblock">
-              <a href="<?php the_permalink(); ?>" class="p-newsBlock__title"><?php the_title(); ?></a>
-            </div>
-          </li>
-      <?php
+          $the_query->the_post();
+          get_template_part('content-archive');
         endwhile;
       else :
         //記事が存在しなかった場合
-        echo '<li class="p-newsBlock__item">';
-        echo '<div>すみません。ただいま記事を準備中です。<br>少々お待ちください。</div>';
-        echo '</li>';
+      ?>
+        <li class="p-newsBlock__item">
+          <p>ただいま記事を準備中です。<br>少々お待ちください。</p>
+        </li>
+      <?php
       endif;
       wp_reset_query(); //クエリをリセット
       ?>
@@ -45,18 +41,21 @@
       <a href="<?php echo home_url('news'); ?>" class="c-btn">すべて見る</a>
     </div>
 
-  </div>
-</article>
+  </article>
+</section>
 
 <!-- 事業内容『CONTENT』 -->
-<section class="l-top-section p-top-content">
+<section class="l-top-section p-top-content js-fadeInTrigger">
+  <!-- 背景の斜め線（右下方向） -->
+  <div class="p-top-backslash__first js-fadeInTrigger"></div>
+
   <div class="p-top-content__inner">
-    <h2 class="p-top-content__header p-section-header l-inner js-blurTrigger">
+    <h2 class="p-top-content__header p-section-header l-inner">
       <span class="p-section-header__title--en">content</span>
-      <span class="p-section-header__title--ja">事業内容</span>
+      <span class="p-section-header__title--ja">事業内容（サンプル）</span>
     </h2>
 
-    <div class="l-top-section__wrapper p-top-content__wrapper js-fadeInTrigger">
+    <div class="l-top-section__wrapper p-top-content__wrapper">
       <ul class="p-top-content__list">
 
         <?php
@@ -67,11 +66,11 @@
         <!-- 事業内容の固定ページ -->
         <li class="p-top-content__item">
           <a href="<?php echo home_url('content'); ?>" class="p-top-content__link">
-            <div class="p-top-content__img">
+            <figure class="p-top-content__img">
               <?php the_post_thumbnail(); ?>
-            </div>
+            </figure>
             <div class="p-top-content__textblock">
-              <p class="p-top-content__text"><?php the_field('main_title'); ?>ページへ</p>
+              <p class="p-top-content__text"><?php esc_html(the_field('main_title')); ?>ページへ</p>
             </div>
           </a>
         </li>
@@ -86,9 +85,9 @@
 
             <li class="p-top-content__item">
               <a href="<?php the_permalink(); ?>" class="p-top-content__link">
-                <div class="p-top-content__img">
+                <figure class="p-top-content__img">
                   <?php the_post_thumbnail(); ?>
-                </div>
+                </figure>
                 <div class="p-top-content__textblock">
                   <p class="p-top-content__text"><?php the_title(); ?>へ</p>
                 </div>
@@ -104,16 +103,17 @@
       </ul>
     </div>
   </div>
-  <!-- 背景の斜め線（右下方向） -->
-  <div class="p-top-backslash__first"></div>
 </section>
 
 <!-- works 制作実績 -->
-<section class="l-top-section p-top-works">
+<section class="l-top-section p-top-works js-fadeInTrigger">
+  <!-- 背景の斜め線（左下方向） -->
+  <div class="p-top-backslash__second js-fadeInTrigger"></div>
+
   <div class="p-top-works__inner">
     <h2 class="p-top-content__header p-section-header l-inner">
       <span class="p-section-header__title--en">works</span>
-      <span class="p-section-header__title--ja">制作実績</span>
+      <span class="p-section-header__title--ja">制作実績(サンプル）</span>
     </h2>
 
     <div class="p-top-works__body">
@@ -126,6 +126,7 @@
               <?php
               $query_args = array(
                 'post_type' => 'works',
+                'post_status' => 'publish',
                 'posts_per_page' => 3,
               );
               $the_query = new WP_Query($query_args);
@@ -134,25 +135,33 @@
                   $workgroup = SCF::get('works-img__group');
               ?>
                   <div class="swiper-slide p-top-works__slide">
-                    <div class="p-top-works__slide-img" style="background-image: url('<?php echo wp_get_attachment_image_url($workgroup[0]['works__img'], 'large'); ?>');" data-swiper-parallax-x="90%">
-                    </div>
+                    <figure class="p-top-works__slide-img" style="background-image: url('<?php echo esc_html(wp_get_attachment_image_url($workgroup[0]['works__img'], 'full')); ?>');" data-swiper-parallax-x="90%">
+                    </figure>
                     <div class="p-top-works__slide-heading">
                       <h3 class="p-top-works__slide-title"><?php the_title() ?></h3>
                       <p class="p-top-works__slide-text" data-swiper-parallax-x="30%" data-swiper-parallax-opacity="0">
-                        スライド１のテキスト スライド１のテキスト
+                        <?php echo get_flexible_excerpt(40); ?>
                       </p>
                     </div>
                   </div>
-              <?php
+                <?php
                 endwhile;
-              else :
-                //記事が存在しなかった場合
-                echo '<li class="p-works__item">';
-                echo '<div>ただいま記事を準備中です。<br>少々お待ちください。</div>';
-                echo '</li>';
-              endif;
-              ?>
+              else : ?>
 
+                <!-- 記事が存在しなかった場合 -->
+                <div class="swiper-slide p-top-works__slide">
+                  <figure class="p-top-works__slide-img" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/works1@2x.jpg')" data-swiper-parallax-x="90%">
+                  </figure>
+                  <div class="p-top-works__slide-heading">
+                    <h3 class="p-top-works__slide-title">只今記事を準備中です。</h3>
+                    <p class="p-top-works__slide-text" data-swiper-parallax-x="30%" data-swiper-parallax-opacity="0">
+                      公開まで、今しばらくお待ちください。
+                    </p>
+                  </div>
+                </div>
+              <?php endif;
+              wp_reset_query(); //クエリをリセット
+              ?>
 
             </div>
           </div>
@@ -174,30 +183,30 @@
       </div>
     </div>
   </div>
-  <!-- 背景の斜め線（左下方向） -->
-  <div class="p-top-backslash__second"></div>
 </section>
 
 <!-- Overview 企業概要 -->
-<section class="l-top-section p-top-overview">
+<section class="l-top-section p-top-overview js-fadeInTrigger">
   <div class="p-top-overview__inner">
     <h2 class="p-top-overview__header p-section-header l-inner">
       <span class="p-section-header__title--en">overview</span>
-      <span class="p-section-header__title--ja">企業概要</span>
+      <span class="p-section-header__title--ja">企業概要（サンプル）</span>
     </h2>
 
     <div class="p-top-overview__body">
       <div class="l-top-section__wrapper p-top-overview__wrapper l-inner">
         <div class="p-top-overview__imgblock">
-          <div class="p-top-overview__img">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/overview@2x.jpg" alt="事業内容画像1枚目">
-          </div>
+          <figure class="p-top-overview__img">
+            <img class="rellax u-hidden-tab" src="<?php echo esc_url(get_the_post_thumbnail_url('27')); ?>">
+            <img class="u-show-tab" src="<?php echo esc_url(get_the_post_thumbnail_url('27')); ?>">
+          </figure>
         </div>
 
         <div class="p-top-overview__content">
-          <h3 class="p-top-overview__title">メインタイトルが入ります</h3>
+          <h3 class="p-top-overview__title">固定ページのサムネイル画像を表示</h3>
           <p class="p-top-overview__text">
-            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            画像比率の指定は、aspect-ratioですとまだSafariでの対応開始から日が浅いため、padding-topにて指定しました。<br>
+            ページ内はSmart Custom Fieldsを使用することで、項目の追加・編集等を容易にし、グーグルマップもお客様側で変更できるように設定しております。
           </p>
           <div class="l-top-btn__left p-top-overview__btnblock">
             <a href="<?php echo home_url('overview'); ?>" class="c-btn">詳しく見る</a>
@@ -210,95 +219,42 @@
 </section>
 
 <!-- Blog ブログ -->
-<section class="l-top-section p-top-blog">
+<section class="l-top-section p-top-blog js-fadeInTrigger">
   <div class="p-top-blog__inner l-inner">
     <h2 class="p-top-blog__header p-section-header">
       <span class="p-section-header__title--en">blog</span>
       <span class="p-section-header__title--ja">ブログ</span>
     </h2>
 
-    <div class="l-top-section__wrapper p-top-blog__body">
+    <article class="l-top-section__wrapper p-top-blog__body">
       <ul class="p-top-blog__list p-blog-cards">
 
-        <li class="p-blog-cards__item p-blog-card">
-          <a class="p-blog-card__link" href="#">
-            <div class="p-blog-card__img">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/blog1@2x.jpg" alt="blogサムネイル画像">
-            </div>
-            <div class="p-blog-card__wrapper">
-              <h3 class="p-blog-card__title">タイトルが入ります。タイトルが入ります。</h3>
-              <p class="p-blog-card__text">説明文が入ります。説明文が入ります。説明文が入ります。</p>
-
-              <div class="p-blog-card__footer">
-                <div class="p-blog-card__category">カテゴリ</div>
-                <time class="p-blog-card__date">2021.07.20</time>
-              </div>
-            </div>
-            <div class="p-blog-card__mark">
-              <p class="p-blog-card__new">new</p>
-            </div>
-          </a>
-        </li>
-
-        <li class="p-blog-cards__item p-blog-card">
-          <a class="p-blog-card__link" href="#">
-            <div class="p-blog-card__img">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/blog2@2x.jpg" alt="blogサムネイル画像">
-            </div>
-            <div class="p-blog-card__wrapper">
-              <h3 class="p-blog-card__title">タイトルが入ります。タイトルが入ります。</h3>
-              <p class="p-blog-card__text">説明文が入ります。説明文が入ります。説明文が入ります。</p>
-
-              <div class="p-blog-card__footer">
-                <div class="p-blog-card__category">カテゴリ</div>
-                <time class="p-blog-card__date">2021.07.19</time>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <li class="p-blog-cards__item p-blog-card">
-          <a class="p-blog-card__link" href="#">
-            <div class="p-blog-card__img">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/blog3@2x.jpg" alt="blogサムネイル画像">
-            </div>
-            <div class="p-blog-card__wrapper">
-              <h3 class="p-blog-card__title">タイトルが入ります。タイトルが入ります。</h3>
-              <p class="p-blog-card__text">説明文が入ります。説明文が入ります。説明文が入ります。</p>
-
-              <div class="p-blog-card__footer">
-                <div class="p-blog-card__category">カテゴリ</div>
-                <time class="p-blog-card__date">2021.07.18</time>
-              </div>
-            </div>
-          </a>
-        </li>
+        <?php
+        $paged = 1;
+        $args = array(
+          'post_type' => 'blog', // 投稿タイプを指定
+          'post_status' => 'publish',
+          'posts_per_page' => 3, // 表示する記事数
+        );
+        $the_query = new WP_Query($args);
+        if ($the_query->have_posts()) :
+          while ($the_query->have_posts()) : $the_query->the_post();
+            include 'content-archive-blog.php';
+          endwhile;
+        endif;
+        wp_reset_query(); //クエリをリセット
+        ?>
 
       </ul>
       <div class="l-top-btn__center p-top-blog__btnblock">
-        <a href="#" class="c-btn">詳しく見る</a>
+        <a href="<?php echo home_url('blog'); ?>" class="c-btn">詳しく見る</a>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- contact お問い合わせ -->
-<section class="l-top-section p-contact-section">
-  <div class="p-contact-section__inner l-inner">
-    <h2 class="p-contact-section__header p-section-header">
-      <span class="p-section-header__title--en">contact</span>
-      <span class="p-section-header__title--ja">お問い合わせ</span>
-    </h2>
+<!-- お問い合わせセクション表示 -->
+<?php get_template_part('content-contact'); ?>
 
-    <div class="p-contact-section__textblock">
-      <p class="p-contact-section__text">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-    </div>
 
-    <div class="l-top-btn__center p-contact-section__btnblock">
-      <a href="<?php echo home_url('contact'); ?>" class="c-btn__effect--neon"><span>詳しく見る</span></a>
-    </div>
-  </div>
-</section>
-
-</main>
 <?php get_footer(); ?>

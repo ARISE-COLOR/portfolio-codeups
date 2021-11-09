@@ -1,0 +1,32 @@
+.p-footerNav {}
+
+.p-footerNav__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.p-footerNav__item {
+  width: 50%;
+  height: rem(80);
+  text-align: center;
+  @include mq() {
+    width: 33.2%;
+    height: rem(50);
+    text-align: left;
+  }
+
+}
+
+.p-footerNav__link {
+  // height: inherit;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  display: inline-block;
+  padding: rem(12) rem(15);
+  font-size: rem(20);
+  @include mq() {
+    font-size: rem(16);
+    // justify-content: flex-start;
+  }
+}

@@ -3,8 +3,8 @@
 .p-page__inner {}
 
 .p-page__content h2 {
-  display: inline-block;
-  font-size: rem(36);
+  display: block;
+  font-size: rem(40);
   font-weight: $bold;
   padding: 0 rem(4);
   border-left: rem(10) solid $title-color;

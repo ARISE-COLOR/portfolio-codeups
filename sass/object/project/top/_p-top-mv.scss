@@ -61,7 +61,7 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  text-align: center;
+
   z-index: 1;
   width: 100%;
   // パーフェクトピクセル調整
@@ -70,7 +70,8 @@
 
 .p-top-mv__title {
   font-size: rem(28);
-  // font-weight: $bold;
+  text-align: center;
+  font-weight: $bold;
   letter-spacing: rem(0.45);
   @include mq() {
     font-size: rem(50);
@@ -80,13 +81,23 @@
 }
 
 .p-top-mv__subtitle {
-  font-size: rem(20);
-  // font-weight: $bold;
-  letter-spacing: rem(0.5);
   margin-top: rem(13);
+  padding: 0 rem(30);
+  font-size: rem(18);
+  text-align: left;
+  letter-spacing: rem(0.5);
+  line-height: 1.5;
   @include mq() {
     margin-top: rem(24);
-    font-size: rem(25);
-    line-height: 1;
+    padding: 0 rem(50);
+    font-size: rem(24);
+    line-height: 1.8;
+  }
+}
+
+.p-top-mv__subtitle--second {
+  margin-top: rem(13);
+  @include mq() {
+    margin-top: rem(20);
   }
 }

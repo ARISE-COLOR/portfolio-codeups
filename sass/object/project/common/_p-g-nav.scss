@@ -1,0 +1,31 @@
+.p-g-nav__list {
+  z-index: $layer-header;
+  @include mq() {
+    height: inherit;
+    display: flex;
+  }
+}
+
+.p-g-nav__item {
+  @include mq() {
+    margin-top: initial;
+    height: inherit;
+  }
+}
+
+.p-g-nav__link {
+  display: inline-block;
+  width: 100%;
+  font-size: rem(16);
+  font-weight: $regular;
+  letter-spacing: rem(2);
+  padding: rem(15) 0;
+  @include mq() {
+    line-height: 2.1875;
+    padding: 0 rem(15);
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

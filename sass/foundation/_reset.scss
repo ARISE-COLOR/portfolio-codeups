@@ -9,14 +9,14 @@
 
 /* リキッドレイアウト対応 */
 html {
-	//375px~787px
+	//375px~767px
 	font-size: vw(375, 16);
 
 	@include mq("sp") {
 		font-size: 16px;
 	}
 
-	//787px~inner
+	//768px~inner
 	@include mq("tab") {
 		font-size: vw(strip-unit($l-inner), 16);
 	}
@@ -167,7 +167,7 @@ ol {
 
 th,
 td {
-  display: block;
+  // display: block;
 }
 
 blockquote,

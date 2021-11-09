@@ -1,13 +1,15 @@
 .p-category__list {
   display: flex;
   flex-wrap: wrap;
+  gap: rem(30);
 }
 
-.p-category__list >li:nth-child(n+1) {
-  margin-left: rem(30);
+.p-category__list >li:nth-child(n+2) {
+  // margin-left: rem(30);
 }
 
 .p-category__item {
+  
 }
 
 .p-category__link{

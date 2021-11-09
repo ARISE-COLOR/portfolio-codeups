@@ -1,26 +1,29 @@
 <section class="p-works-header">
-  <h2 class="p-works-header__title">
+  <h1 class="p-works-header__title">
     <?php the_title(); ?>様　制作実績
-  </h2>
+  </h1>
 </section>
 
 
-
 <!-- スライダー -->
+<?php $imggroup = SCF::get('works-img__group'); ?>
 <div class="l-works-slider p-works-slider">
   <div class="p-works-slider__inner">
     <div class="swiper-container p-works-slider__container--main js-works-slider">
       <div class="swiper-wrapper p-works-slider__wrapper--main">
 
         <!-- 繰り返しフィールド読み込み -->
-        <?php
-        $imggroup = SCF::get('works-img__group');
-        foreach ($imggroup as $fields) {
-        ?>
+        <?php foreach ($imggroup as $fields) { ?>
 
-          <div class="swiper-slide p-works-slider__img--main">
-            <?php echo wp_get_attachment_image($fields['works__img'], 'full'); ?>
-          </div>
+          <figure class="swiper-slide p-works-slider__img--main">
+            <?php 
+            if(esc_html($fields['works__img'])):
+            echo wp_get_attachment_image(esc_html($fields['works__img']), 'full');
+            else:
+              echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/noimg.png" />';
+            endif;
+            ?>
+          </figure>
 
         <?php } ?>
       </div>
@@ -37,9 +40,9 @@
         foreach ($imggroup as $fields) {
         ?>
 
-          <div class="swiper-slide  p-works-slider__img--thumbnail">
-            <?php echo wp_get_attachment_image($fields['works__img'], 'full'); ?>
-          </div>
+          <figure class="swiper-slide  p-works-slider__img--thumbnail">
+            <?php echo wp_get_attachment_image(esc_html($fields['works__img']), 'full'); ?>
+          </figure>
 
         <?php } ?>
       </div>
@@ -54,48 +57,15 @@
   $textgroup = SCF::get('works-text__group');
   foreach ($textgroup as $fields) {
   ?>
-    <h3 class="p-works-textarea__title">
-      <?php echo ($fields['works__title']); ?>
-      </h4>
-      <p class="p-works-textarea__text">
-        <?php echo ($fields['works__text']); ?>
-      </p>
+    <h2 class="p-works-textarea__title">
+      <?php echo esc_html(($fields['works__title'])); ?>
+    </h2>
+    <p class="p-works-textarea__text">
+      <?php echo esc_html(($fields['works__text'])); ?>
+    </p>
 
-    <?php } ?>
-
-
+  <?php } ?>
 </section>
 
-
-<div class="l-works-moreButton p-works-moreButton">
-  <div class="p-works-moreButton__inner">
-  <?php
-  // 新しい記事に行くのがget_next_post
-  $next_post = get_next_post();
-  // 古い記事に行くのがget_previous_post
-  $prev_post = get_previous_post();
-  if ($next_post) :
-  ?>
-    <!-- PREVが新しい記事 -->
-    <div class="p-works-moreButton__prev">
-      <a class="p-works-moreButton__link" href="<?php echo get_permalink($next_post->ID); ?>">PREV</a>
-    </div>
-  <?php
-  endif;
-  ?>
-  <div class="p-works-moreButton__archive">
-    <a class="p-works-moreButton__link" href="<?php echo home_url('works'); ?>">制作実績 一覧</a>
-  </div>
-  <?php
-  if ($prev_post) :
-  ?>
-    <!-- NEXTが古い記事 -->
-    <div class="p-works-moreButton__next">
-      <a class="p-works-moreButton__link" href="<?php echo get_permalink($prev_post->ID); ?>">NEXT</a>
-    </div>
-  <?php
-  endif;
-  ?>
-  </div>
- 
-</div>
+<!-- 記事用のページネーション （新しい記事へ　記事一覧　過去の記事へ-->
+<?php get_template_part('part-PrevNext-pagination'); ?>

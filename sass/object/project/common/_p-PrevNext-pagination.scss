@@ -1,0 +1,43 @@
+.p-PrevNext-pagination {
+  text-align: center;
+  font-size: rem(14);
+  @include mq() {
+    font-size: rem(16);
+  }
+}
+
+.p-PrevNext-pagination__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mq() {
+    
+  }
+}
+
+.p-PrevNext-pagination__prev {}
+
+.p-PrevNext-pagination__archive {
+  margin: 0 rem(12);
+  @include mq() {
+    margin: 0 rem(50);
+  }
+  
+}
+
+.p-PrevNext-pagination__next {}
+
+.p-PrevNext-pagination__link {
+  padding: rem(10) rem(10);
+  border: 1px solid $text-color;
+  background-color: $background-accent;
+  @include mq() {
+    padding: rem(10) rem(20);
+  }
+}
+
+.p-PrevNext-pagination__link:hover {
+  transition: 0.3s;
+  background-color: $background-inverted-color;
+  color: $text-inverted-color;
+}

@@ -1,0 +1,6 @@
+.l-footer-copyright {
+  margin: rem(40) 0;
+  @include mq() {
+    margin-top: rem(20) 0;
+  }
+}

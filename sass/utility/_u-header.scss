@@ -1,0 +1,29 @@
+/*上への動き*/
+#u-header.UpMove {
+  animation: UpAnime 0.5s forwards;
+}
+@keyframes UpAnime{
+  from {
+    opacity: 1;
+	transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+	transform: translateY(-100px);
+  }
+}
+
+/*下への動き*/
+#u-header.DownMove {
+  animation: DownAnime 0.5s forwards;
+}
+@keyframes DownAnime{
+  from {
+  	opacity: 0;
+	transform: translateY(-100px);
+  }
+  to {
+  	opacity: 1;
+	transform: translateY(0);
+  }
+}

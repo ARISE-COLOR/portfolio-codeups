@@ -1,0 +1,106 @@
+.p-footerLogo {
+  text-align: center;
+  @include mq() {
+  text-align: start;
+  }
+}
+
+.p-footerLogo__title {
+  font-family: $font-family-logo;
+  font-size: rem(50);
+@include mq() {
+  font-size: rem(30);
+}
+}
+
+
+.p-footerLogo__title p {
+  display: flex;
+  color: transparent;
+  justify-content: center;
+  @include mq() {
+    justify-content: start;
+  }
+  
+}
+
+.p-footerLogo__title p span {
+animation: logoAnime 5s linear infinite;
+animation-delay: calc(0.1s * var(--i));
+
+}
+
+@keyframes logoAnime
+{
+  0%
+  {
+    color: #fff;
+    filter: blur(0) hue-rotate(0deg);
+    text-shadow: 0 0 10px $neon-color,
+    0 0 20px $neon-color,
+    0 0 30px $neon-color,
+    // 0 0 80px $neon-color,
+    // 0 0 120px $neon-color,
+    // 0 0 200px $neon-color,
+    // 0 0 300px $neon-color,
+    // 0 0 400px $neon-color;
+  }
+  30%
+  {
+    color: #fff;
+    filter: blur(1px) hue-rotate(360deg);
+    text-shadow: 0 0 10px $neon-color,
+    0 0 20px $neon-color,
+    0 0 30px $neon-color,
+    // 0 0 80px $neon-color,
+    // 0 0 120px $neon-color,
+    // 0 0 200px $neon-color,
+  }
+  50%
+  {
+    color: #fff;
+    filter: blur(0) hue-rotate(0deg);
+    text-shadow: 0 0 10px $neon-color,
+    0 0 20px $neon-color,
+    0 0 30px $neon-color,
+    // 0 0 80px $neon-color,
+    // 0 0 120px $neon-color,
+    // 0 0 200px $neon-color,
+  }
+  70%
+  {
+    color: #fff;
+    filter: blur(1px) hue-rotate(360deg);
+    text-shadow: 0 0 10px $neon-color,
+    0 0 20px $neon-color,
+    0 0 30px $neon-color,
+    // 0 0 80px $neon-color,
+    // 0 0 120px $neon-color,
+    // 0 0 200px $neon-color,
+  }
+  100%
+  {
+    color: transparent;
+    box-shadow: none;
+    filter: blur(0) hue-rotate(0deg);
+  }
+}
+
+.p-footerLogo__enterprise h2 {
+  font-size: rem(30);
+  @include mq() {
+    font-size: rem(24);
+  }
+}
+
+.p-footerLogo__enterprise h2 span {
+  display: inline-block;
+}
+
+.p-footerLogo__enterprise p {
+  line-height: 1.8;
+  font-size: rem(16);
+  @include mq() {
+    font-size: rem(16);
+  }
+}

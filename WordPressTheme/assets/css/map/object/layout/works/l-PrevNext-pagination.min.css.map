@@ -1,0 +1,1 @@
+{"version":3,"sources":["object/layout/works/l-PrevNext-pagination.scss","object/layout/works/l-PrevNext-pagination.css"],"names":[],"mappings":"AAAA,oBCCC,WDAC","file":"../../../../object/layout/works/l-PrevNext-pagination.min.css","sourcesContent":[".l-works-moreButton {\r\n  margin-top: rem(30);\r\n}",".l-works-moreButton {\n  margin-top: rem(30);\n}\n"]}

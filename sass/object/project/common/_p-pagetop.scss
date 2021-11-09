@@ -1,0 +1,44 @@
+.p-pagetop {
+  position: fixed;
+  bottom: rem(40);
+  right: rem(20);
+  z-index: $layer-up;
+  background-color: $white;
+  width: rem(45);
+  height: rem(45);
+  @include mq() {
+    bottom: rem(30);
+    right: rem(30);
+    transition: background-color .3s;
+  }
+}
+
+.p-pagetop:hover {
+  background-color: $gray;
+}
+
+.p-pagetop::before,
+.p-pagetop::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  width: 40%;
+  height: rem(2);
+  background-color: $gray;
+}
+
+.p-pagetop:hover::after,
+.p-pagetop:hover::before {
+  background-color: $white;
+}
+
+.p-pagetop::before {
+  left: rem(8);
+  border-radius: 50% 0 0 50%;
+  transform: rotate(-45deg);
+}
+.p-pagetop::after {
+  right: rem(8);
+  border-radius: 0 50% 50% 0;
+  transform: rotate(45deg);
+}

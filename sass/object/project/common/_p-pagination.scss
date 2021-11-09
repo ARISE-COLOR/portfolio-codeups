@@ -1,0 +1,41 @@
+.p-pagination {}
+
+.p-pagination__wrapper {
+  text-align: center;
+}
+
+.p-pagination__wrapper span,
+.p-pagination__wrapper a {
+  color: $text-color;
+  font-size: rem(16);
+  transition: 0.2s ease-in-out;
+  @include mq() {
+    font-size: rem(20);
+  }
+}
+.p-pagination__wrapper a {
+  background-color: $background-accent;
+  border: thin dotted $text-color;
+  margin: 0 rem(8);
+  padding: rem(6) rem(12);
+  @include mq() {
+    margin: 0 rem(15);
+    padding: rem(8) rem(15);
+  }
+}
+
+.p-pagination__wrapper a:hover {
+	color: $background-accent;
+	background-color: $text-color;
+}
+
+.p-pagination__wrapper span.current {
+  color: $background-accent;
+	background-color: $text-color;
+  margin: 0 rem(8);
+  padding: rem(6) rem(12);
+  @include mq() {
+    margin: 0 rem(10);
+    padding: rem(8) rem(15);
+  }
+}

@@ -1,14 +1,8 @@
 <?php
 
-/**
- * Functions
- */
-
-/**
- * WordPress標準機能
- *
- * @codex https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/add_theme_support
- */
+/**************************************************************
+* WordPress標準機能
+**************************************************************/
 function my_setup()
 {
   add_theme_support('post-thumbnails'); /* アイキャッチ */
@@ -27,78 +21,80 @@ function my_setup()
 }
 add_action('after_setup_theme', 'my_setup');
 
-
-/**
- * CSSとJavaScriptの読み込み
- *
- * @codex https://wpdocs.osdn.jp/%E3%83%8A%E3%83%93%E3%82%B2%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC
- */
+/**************************************************************
+* CSSとJavaScriptの読み込み
+**************************************************************/
 function my_script_init()
 {
-
   wp_enqueue_style('my', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.1', 'all');
 
-  wp_enqueue_script('my', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0.1', true);
+  wp_enqueue_script('my-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0.1', true);
+  wp_enqueue_script('rellax', get_template_directory_uri() . '/assets/js/rellax.min.js', array(), true);
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
 
 
-
-/* 投稿アーカイブページの作成 */
+/**************************************************************
+* 投稿アーカイブページの作成
+**************************************************************/
 function post_has_archive($args, $post_type)
 {
-
   if ('post' == $post_type) {
     $args['rewrite'] = true;
-    $args['has_archive'] = 'news'; //任意のスラッグ名
+    $args['has_archive'] = 'news';
   }
   return $args;
 }
 add_filter('register_post_type_args', 'post_has_archive', 10, 2);
 
 
-
-//固定ページの『抜粋文』表示機能の有効化
+/**************************************************************
+* 固定ページの『抜粋文』表示機能の有効化
+**************************************************************/
 add_post_type_support('page', 'excerpt');
 
-//get_the_excerpt()で取得する文字列に改行タグを挿入
+/**************************************************************
+* get_the_excerpt()で取得する文字列に改行タグを挿入
+**************************************************************/
 function apply_excerpt_br($value)
 {
   return nl2br($value);
 }
 add_filter('get_the_excerpt', 'apply_excerpt_br');
 
-//抜粋文の最後の省略文字をデフォルトの[...]から変更する
+/**************************************************************
+* 抜粋文の最後の省略文字をデフォルトの[...]から変更する
+**************************************************************/
 function cms_excerpt_more()
 {
   return '...';
 }
 add_filter('excerpt_more', 'cms_excerpt_more');
 
-//抜粋文のデフォルト文字数を定義する
+/**************************************************************
+* 抜粋文のデフォルト文字数を定義する
+**************************************************************/
 function cms_excerpt_length()
 {
   return 80;
 }
 add_filter('excerpt_mblength', 'cms_excerpt_length');
 
-
-//抜粋文の文字数をフレキシブルに設定する関数
-//wp_trim_words:第一引数に抜粋対象の文字列、第二引数には数値、第三引数には抜粋文の最後に表示する内容を指定
-//これを本来get_the_excerptを入れるところに代入すると、そこだけ指定文字数で抜粋できる
+/**************************************************************
+* 抜粋文の文字数をフレキシブルに設定する関数
+* これを本来get_the_excerptを入れるところに代入すると、そこだけ指定文字数で抜粋できる
+* wp_trim_words:第一引数に抜粋対象の文字列、第二引数には数値、第三引数には抜粋文の最後に表示する内容を指定
+**************************************************************/
 function get_flexible_excerpt($number)
 {
   $value = get_the_excerpt();
   $value = wp_trim_words($value, $number, '...');
-  return $value;
+  return esc_html($value);
 }
 
-
-/**
- * メニューの登録
- *
- * @codex https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/register_nav_menus
- */
+/**************************************************************
+* メニューの登録
+**************************************************************/
 function my_menu_init()
 {
   register_nav_menus(
@@ -111,32 +107,8 @@ function my_menu_init()
 }
 add_action('init', 'my_menu_init');
 
-
-//メニューのクラス追加
-function add_additional_class_on_li($classes, $item, $args)
-{
-  //add_li_classで指定した内容を反映
-  if (isset($args->add_li_class)) {
-    $classes[] = $args->add_li_class;
-  }
-  return $classes;
-
-  // 現在のページのliタグの場合
-  if ($item->current == true) {
-    // classの値にcurrentを付与
-    $classes[] = 'current';
-  }
-
-  return $classes;
-}
-add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
-
-
-
 /**
  * ウィジェットの登録
- *
- * @codex http://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/register_sidebar
  */
 // function my_widget_init() {
 // 	register_sidebar(
@@ -193,141 +165,108 @@ function my_archive_title($title)
 add_filter('get_the_archive_title', 'my_archive_title');
 
 
-/**
- * 抜粋文の文字数の変更
- *
- * @param int $length 変更前の文字数.
- * @return int $length 変更後の文字数.
- */
-function my_excerpt_length($length)
-{
-  return 80;
-}
-add_filter('excerpt_length', 'my_excerpt_length', 999);
-
-
-/**
- * 抜粋文の省略記法の変更
- *
- * @param string $more 変更前の省略記法.
- * @return string $more 変更後の省略記法.
- */
-function my_excerpt_more($more)
-{
-  return '...';
-}
-add_filter('excerpt_more', 'my_excerpt_more');
-
-
-//トップページのメインビジュアル画像用のサイズ設定
-add_image_size('top', 1077, 622, true);
-
-
-
-//各テンプレートごとのメイン画像を表示
+/**************************************************************
+* 各テンプレートごとのメイン画像を表示
+**************************************************************/
 function get_main_image()
 {
   global $post;
-  if (is_page() || is_singular('daily_contribution')) :
+  if (is_page()) :
     if (get_field('main_image')) :
       $attachment_id = get_field('main_image');
-      return wp_get_attachment_image($attachment_id, 'full');
-    elseif (get_the_post_thumbnail($post->ID)) :
+      return wp_get_attachment_image(esc_html($attachment_id), 'full');
+    elseif (has_post_thumbnail($post->ID)) :
       return get_the_post_thumbnail($post->ID, 'full');
     else :
-      return '<img src="' . get_template_directory_uri() . '/assets/img/overview@2x.jpg" />';
+      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/overview@2x.jpg" />';
     endif;
-  //制作実績アーカイブページ
+
   elseif (is_post_type_archive('works') || is_tax('genre')) :
-    return '<img src="' . get_template_directory_uri() . '/assets/img/works0.jpg" />';
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/works0.jpg" />';
 
   elseif (is_post_type_archive('blog') || is_tax('subject')) :
-    return '<img src="' . get_template_directory_uri() . '/assets/img/blog0@2x.jpg" />';
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/blog0@2x.jpg" />';
 
-  elseif (is_tax('genre')) :
-    return '<img src="' . get_template_directory_uri() . '/assets/img/works0.jpg" />';
-
-  elseif (is_tax('subject')) :
-    return '<img src="' . get_template_directory_uri() . '/assets/img/blog0@2x.jpg" />';
-
-  elseif (is_archive() || is_singular('post')) : //newsカテゴリorシングル投稿ページの場合
-    return '<img src="' . get_template_directory_uri() . '/assets/img/news@2x.jpg" />';
+  elseif (is_archive() || is_singular('post')) :
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/news@2x.jpg" />';
 
   elseif (is_search() || is_404()) :
-    return '<img src="' . get_template_directory_uri() . '/assets/images/bg-page-search.jpg" />';
-
-
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/404.jpg" />';
 
   else :
-    return '<img src="' . get_template_directory_uri() . '/assets/images/bg-page-dummy.png" />';
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/imag/overview@2x.jpg" />';
   endif;
 }
 
-
-
-//アーカイブページの、各カード型情報のサムネイル画像を表示
-function get_card_image()
+/**************************************************************
+* アーカイブページの、各カード型情報のサムネイル画像を表示
+**************************************************************/
+function get_card_image($categoryName = null)
 {
   global $post;
-  if (is_front_page()) :
-
-
-  elseif (is_post_type_archive('works') || is_tax('genre')) :
+  if (is_post_type_archive('works') || is_tax('genre')) :
     $workgroup = SCF::get('works-img__group');
 
     //サムネイル画像が設定されていればサムネイル画像表示
-    if (get_the_post_thumbnail($post->ID)) :
+    if (has_post_thumbnail($post->ID)) :
       return get_the_post_thumbnail($post->ID, 'full');
 
     //サムネイル画像が無い場合は、スライダー画像の１枚目表示
     elseif ($workgroup[0]['works__img']) :
-      return wp_get_attachment_image($workgroup[0]['works__img'], 'full');
+      return wp_get_attachment_image(esc_html($workgroup[0]['works__img']), 'full');
 
     //画像登録されていない場合、ダミーとしてworks0.jpgを表示
     else :
-      return '<img src="' . get_template_directory_uri() . '/assets/img/works0.jpg" />';
+      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/works0.jpg" />';
     endif;
 
-
-  elseif (is_post_type_archive('blog') || is_tax('subject')) :
-    return '<img src="' . get_template_directory_uri() . '/assets/img/blog0.jpg" />';
+  elseif (is_post_type_archive('blog') || is_tax('subject') || $categoryName == 'blog') :
+    if (has_post_thumbnail($post->ID)) :
+      return get_the_post_thumbnail($post->ID, 'full');
+    //画像登録されていない場合、ダミーとしてworks0.jpgを表示
+    else :
+      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/noimg.png" />';
+    endif;
 
   else :
-    return '<img src="' . get_template_directory_uri() . '/assets/img/works0.jpg" />';
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/works0.jpg" />';
   endif;
 }
 
 
-
-//メイン画像上にテンプレートごとの文字列を表示
+/**************************************************************
+* メイン画像上にテンプレートごとの文字列を表示
+**************************************************************/
 function get_main_title()
 {
   global $post;
   if (is_singular('post')) :
     $category_obj = get_the_category();
-    return $category_obj[0]->name;
+    return esc_html($category_obj[0]->name);
   elseif (is_page()) :
-    return get_the_title();
+    return esc_html(get_the_title());
   elseif (is_category() || is_tax()) :
-    return single_cat_title();
+    return esc_html(single_cat_title());
+  elseif (is_post_type_archive('post')) :
+    return 'お知らせ';
   elseif (is_post_type_archive()) :
-    return post_type_archive_title();
+    return esc_html(post_type_archive_title());
   elseif (is_archive()) :
     $page_obj = get_page_by_path('news');
     $page = get_post($page_obj);
-    return $page->post_title;     //タイトルを表示
+    return esc_html($page->post_title);     //タイトルを表示
   elseif (is_search()) :
     return 'サイト内検索結果';
   elseif (is_404()) :
-    return 'ページが見つかりません';
-  elseif (is_singular('daily_contribution')) :
-    $term_obj = get_the_terms($post->ID, 'event');
-    return $term_obj[0]->name;
+    return '404 Not Found';
+  else :
+    return '';
   endif;
 };
 
-
-//子ページを取得する関数
+/**************************************************************
+* 子ページを取得する関数
+**************************************************************/
 function get_child_pages($number = -1, $specified_id = null)
 { //-1を指定すると全てのページを読み込める
   if (isset($specified_id)) :
@@ -367,9 +306,9 @@ function get_child_pages($number = -1, $specified_id = null)
 //   ]);
 // });
 
-//******************************************************************
-//カスタム投稿タイプ works を登録する
-//******************************************************************
+/**************************************************************
+* カスタム投稿タイプ works を登録する
+**************************************************************/
 add_action('init', 'codex_works_init');
 function codex_works_init()
 {
@@ -402,8 +341,9 @@ function codex_works_init()
 
   register_post_type('works', $args);
 }
-
-//カスタム投稿タイプ works のカスタムタクソノミー（genre)を追加
+/**
+* カスタム投稿タイプ works のカスタムタクソノミー（genre)を追加
+**/
 add_action('init', 'create_works_taxonomies', 0);
 function create_works_taxonomies()
 {
@@ -428,10 +368,9 @@ function create_works_taxonomies()
   register_taxonomy('genre', 'works', $args);
 }
 
-
-//******************************************************************
-//カスタム投稿タイプ blog を登録する
-//******************************************************************
+/**************************************************************
+* カスタム投稿タイプ blog を登録する
+**************************************************************/
 add_action('init', 'codex_blog_init');
 function codex_blog_init()
 {
@@ -465,7 +404,9 @@ function codex_blog_init()
   register_post_type('blog', $args);
 }
 
-//カスタム投稿タイプ blog のカスタムタクソノミー（subject)を追加
+/**
+* カスタム投稿タイプ blog のカスタムタクソノミー（subject)を追加
+**/
 add_action('init', 'create_blog_taxonomies', 0);
 function create_blog_taxonomies()
 {
@@ -491,10 +432,9 @@ function create_blog_taxonomies()
   register_taxonomy('subject', 'blog', $args);
 }
 
-
-//******************************************************************
-// カスタム投稿タイプでカテゴリ未選択時にデフォルトで others(その他) を設定
-//******************************************************************
+/**************************************************************
+* カスタム投稿タイプでカテゴリ未選択時にデフォルトで others(その他) を設定
+**************************************************************/
 //制作実績用
 function add_works_defaultcategory_automatically($post_ID)
 {
@@ -511,7 +451,9 @@ function add_works_defaultcategory_automatically($post_ID)
 }
 add_action('publish_works', 'add_works_defaultcategory_automatically');
 
-//ブログ用
+/**
+* ブログ用
+**/
 function add_blog_defaultcategory_automatically($post_ID)
 {
   global $wpdb;
@@ -520,7 +462,6 @@ function add_blog_defaultcategory_automatically($post_ID)
 
   // 既存のターム指定数が 0（つまり未設定）であれば）「others」を指定
   if (0 == count($blogTerm)) {
-    // others のターム ID=7
     $defaultTerm = array(11);
     wp_set_object_terms($post_ID, $defaultTerm, 'subject');
   }
@@ -529,9 +470,9 @@ add_action('publish_blog', 'add_blog_defaultcategory_automatically');
 
 
 
-//******************************************************************
-/* the_archive_title 余計な文字を削除 */
-//******************************************************************
+/****************************************************************
+* the_archive_title 余計な文字を削除
+*****************************************************************/
 add_filter('get_the_archive_title', function ($title) {
   if (is_category()) {
     $title = single_cat_title('', false);
@@ -549,5 +490,85 @@ add_filter('get_the_archive_title', function ($title) {
     $title = '「404」ページが見つかりません';
   } else {
   }
-  return $title;
+  return esc_html($title);
 });
+
+
+
+/****************************************************************
+* 記事にNEWマークを条件指定で表示するための条件判断関数
+*****************************************************************/
+
+/**
+* ①指定した日数以内の記事全てにNEWマークを表示（$daysには表示したい日数を指定）
+**/
+function newMark_condition_time($days)
+{
+  $today = date_i18n('U');
+  $entry_day = get_the_time('U');
+  $difference_time = date('U', ($today - $entry_day)) / 86400;
+  if ($days > $difference_time) :
+    return true;
+  else :
+    return false;
+  endif;
+}
+
+/**
+* ②指定した件数の最新記事全てにNEWマークを表示（$limitには表示したい件数を指定,$current_postには$wp_query->current_postの値を代入）
+**/
+function newMark_condition_num($limit, $current_post)
+{
+  if ($limit > $current_post) :
+    return true;
+  else :
+    return false;
+  endif;
+}
+
+/**
+* ③上記２つの条件を組み合わせ、指定した日数以内の指定件数の最新記事にNEWマークを表示
+**/
+function newMark_condition_numTime($days, $limit, $current_post)
+{
+  $today = date_i18n('U');
+  $entry_day = get_the_time('U');
+  $difference_time = date('U', ($today - $entry_day)) / 86400;
+  if ($days > $difference_time) :
+    if ($limit > $current_post) :
+      return true;
+    else :
+      return false;
+    endif;
+  else :
+    return false;
+  endif;
+}
+
+
+
+/****************************************************************
+* ページネーション
+*****************************************************************/
+function original_pagenation($max_page){
+  the_posts_pagination(
+      array(
+          'mid_size' => 1,
+          'end_size' => 1,
+          // 'prev_text' => '前へ',
+          // 'next_text' => '次へ',
+          'total' => $max_page,
+          'prev_next' => false,
+      )
+  );
+}
+
+function custom_the_posts_pagination( $template ) {
+	$template = '
+	<nav class="l-pagination p-pagination %1$s" role="navigation">
+		<h3 class="screen-reader-text">%2$s</h3>
+		<div class="p-pagination__wrapper">%3$s</div>
+	</nav>';
+	return $template;
+}
+add_filter( 'navigation_markup_template', 'custom_the_posts_pagination' );

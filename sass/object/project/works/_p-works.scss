@@ -15,7 +15,7 @@
 }
 
 .p-works__list > li:nth-child(n+2) {
-  margin-top: rem(50);
+  margin-top: rem(60);
   @include mq() {
     margin-top: initial;
   }

@@ -1,0 +1,6 @@
+.l-snsNavi {
+  margin-top: rem(30);
+  @include mq() {
+    margin-top: rem(10);
+  }
+}

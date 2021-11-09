@@ -1,0 +1,13 @@
+.p-notfound p {
+  font-size: rem(36);
+  text-align: center;
+}
+
+.p-notfound__btnblock {
+  background-color: $background-accent;
+  max-width: rem(300);
+  width: 100%;
+  @include mq() {
+    @include hover__left-to-right($text-inverted-color, $background-inverted-color);
+  }
+}

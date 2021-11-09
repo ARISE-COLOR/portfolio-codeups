@@ -1,0 +1,26 @@
+.p-snsNavi {
+
+}
+
+.p-snsNavi__list {
+  display: flex;
+  justify-content: center;
+  @include mq() {
+    justify-content: end;
+  }
+}
+
+.p-snsNavi__list li:nth-child(n+2) {
+  margin-left: rem(30);
+  @include mq() {
+    margin-left: rem(15);
+  }
+}
+
+.p-snsNavi__item {
+  width: rem(80);
+  @include mq() {
+    width: rem(60);
+  }
+
+};

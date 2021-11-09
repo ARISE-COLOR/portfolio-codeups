@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-<section class="l-contact p-contact">
+<!-- お問い合わせページ -->
+<div class="l-contact p-contact">
   <div class="p-contact__inner l-inner">
     <div class="p-contact__wrapper">
       <?php
@@ -11,8 +12,6 @@
       ?>
     </div>
   </div>
-</section>
-
-
+</div>
 
 <?php get_footer(); ?>
