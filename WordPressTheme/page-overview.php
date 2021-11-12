@@ -2,19 +2,20 @@
 
 <div class="l-overview p-overview">
   <div class="p-overview__inner l-inner">
+    <dl class="p-overview__items">
+      <!-- 繰り返しフィールド読み込み -->
+      <?php
+      $overviewgroup = SCF::get('overview__group');
+      foreach ($overviewgroup as $fields) {
+      ?>
 
-    <!-- 繰り返しフィールド読み込み -->
-    <?php
-    $overviewgroup = SCF::get('overview__group');
-    foreach ($overviewgroup as $fields) {
-    ?>
+        <div class="p-overview__item">
+          <dt class="p-overview__title"><?php echo esc_html($fields['overview__title']); ?></dt>
+          <dd class="p-overview__text"><?php echo esc_html($fields['overview__text']); ?></dd>
+        </div>
 
-      <dl class="p-overview__list">
-        <dt class="p-overview__title"><?php echo esc_html($fields['overview__title']); ?></dt>
-        <dd class="p-overview__text"><?php echo esc_html($fields['overview__text']); ?></dd>
-      </dl>
-
-    <?php } ?>
+      <?php } ?>
+    </dl>
   </div>
 </div>
 

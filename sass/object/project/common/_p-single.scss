@@ -4,35 +4,50 @@
 
 .p-single__content h1 {
   display: inline-block;
-  font-size: rem(42);
+  font-size: rem(24);
   font-weight: $bold;
   padding: 0 rem(4);
+  @include mq() {
+    font-size: rem(38);
+  }
 }
 
 .p-single__content h2 {
-  display: inline-block;
-  font-size: rem(36);
+  margin-top: rem(5);
+  font-size: rem(22);
   font-weight: $bold;
   padding: 0 rem(4);
-  border-left: rem(10) solid $title-color;
-  background-color: rgba($color: $title-color, $alpha: 0.1);
+  border-left: 6px double $title-color;
+  @include mq() {
+    font-size: rem(32);
+  }
 }
 
 .p-single__content h3 {
   display: inline-block;
-  font-size: rem(30);
+  font-size: rem(20);
   font-weight: $medium;
   border-bottom: rem(5) solid $title-color;
+  @include mq() {
+    font-size: rem(28);
+  }
 }
 
 .p-single__content h4 {
   display: inline-block;
-  font-size: rem(26);
+  font-size: rem(18);
   font-weight: $medium;
   border-bottom: rem(5) solid $title-color;
+  @include mq() {
+    font-size: rem(24);
+  }
 }
 
 .p-single__content p {
   margin-top: rem(30);
   line-height: 2;
+  font-size: rem(16);
+  @include mq() {
+  font-size: rem(18);
+  }
 }

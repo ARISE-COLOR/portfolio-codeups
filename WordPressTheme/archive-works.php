@@ -29,6 +29,7 @@
 <!-- 制作実績の記事一覧表示 -->
 <section class="l-works p-works">
   <div class="p-works__inner l-inner">
+    <h2></h2>
     <ul class="p-works__list">
       <?php
       $paged = get_query_var('paged')? get_query_var('paged') : 1;

@@ -9,7 +9,7 @@ $terms = get_the_terms($post->ID, 'genre');
     <figure class="p-works__img">
       <?php echo get_card_image(); ?>
     </figure>
-    <h3 class="p-works__title"><?php the_title(); ?></h3>
+    <h2 class="p-works__title"><?php the_title(); ?></h2>
   </a>
   <div class="p-works__category">
 

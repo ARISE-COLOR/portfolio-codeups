@@ -89,7 +89,7 @@
   position: absolute;
   top: 32%;
   left: 0;
-  width: 80%;
+  width: 90%;
   margin-left: 5%;
   padding-left: 1%;
   color: $red;
@@ -104,11 +104,15 @@
 }
 
 .p-top-works__slide-text{
-  font-size: rem(20);
-  margin-top: rem(20);
+  font-size: rem(16);
+  margin-top: rem(14);
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.35;
   transform: translateX(50px);
+  @include mq() {
+    font-size: rem(18);
+    margin-top: rem(20);
+  }
 }
 
 .p-top-works__pagenation-wrapper {

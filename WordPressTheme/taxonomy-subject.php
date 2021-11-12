@@ -45,7 +45,7 @@
       $args = array(
         'post_type' => 'blog', // 投稿タイプを指定
         'post_status' => 'publish', 
-        'posts_per_page' => 2, // 表示する記事数
+        'posts_per_page' => 6, // 表示する記事数
         'paged'=>$paged,
         'tax_query' => array(
           array(

@@ -2,7 +2,11 @@
   overflow: hidden;
 }
 
-.p-overview__list {
+.p-overview__items {
+
+}
+
+.p-overview__item {
   padding: rem(10) rem(15);
   @include mq() {
     display: flex;

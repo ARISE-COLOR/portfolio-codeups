@@ -36,14 +36,21 @@
 .swiper-button-prev {
   background-color: $pagination-backcolor;
   border-radius: 50%;
-  width: rem(50);
-  height: rem(50);
+  width: rem(28);
+  height: rem(28);
+  @include mq() {
+    width: rem(50);
+    height: rem(50);
+  }
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: rem(30);
+  font-size: rem(15);
   color: $pagination-color;
+  @include mq() {
+    font-size: rem(30);
+  }
 }
 
 

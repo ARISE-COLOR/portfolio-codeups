@@ -7,6 +7,7 @@ $this_category_id = $this_category_obj->cat_ID; //現在のカテゴリーID取�
 
 <article class="l-archive p-archive">
   <div class="p-archive__inner l-inner p-newsBlock">
+    <h2 class="p-archive__title">お知らせ：<? echo esc_html($this_category_obj->cat_name);?>一覧</h2>
     <ul class="p-newsBlock__list">
 
       <?php

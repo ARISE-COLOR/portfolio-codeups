@@ -10,11 +10,12 @@
   font-size: rem(50);
   font-weight: $font-weight-base;
   line-height: 1;
-  text-align: center;
+  // text-align: center;
   text-transform: capitalize;
+  width: 100%;
   @include mq() {
     font-size: rem(110);
-    text-align: start;
+    // text-align: start;
   }
 }
 
@@ -26,9 +27,16 @@
   transform: translateX(-50%);
   font-size: rem(20);
   text-align: center;
+  width: 100%;
   @include mq() {
     font-size: rem(30);
     top: 10%;
   }
 }
 
+.p-section-header__title--right {
+  
+  @include mq() {
+    text-align: end;
+  }
+}

@@ -1,8 +1,10 @@
 <?php get_header(); ?>
 
+
 <!-- お知らせ一覧 -->
 <article class="l-archive p-archive">
   <div class="p-archive__inner l-inner p-newsBlock">
+    <h2 class="p-archive__title">お知らせ一覧</h2>
     <ul class="p-newsBlock__list">
 
       <?php

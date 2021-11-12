@@ -4,9 +4,9 @@
 jQuery(function ($) {
   $(window).on("load", function () {
     $("body").attr("data-loading", "true");
-    //フッターナビメニューにクラス名追加
-    jQuery('.p-footerNav__list li').addClass('p-footerNav__item');
-    jQuery('.p-footerNav__list a').addClass('p-footerNav__link u-link-hover__nav');
+    //フッターナビメニューにクラス名追加(firefoxでは機能せず)
+    $('.p-footerNav__list li').addClass('p-footerNav__item');
+    $('.p-footerNav__list a').addClass('p-footerNav__link u-link-hover__nav');
 
   });
 
@@ -406,12 +406,6 @@ jQuery(function ($) {
   }
 });
 
-jQuery(function ($) {
-  var area = ($('.mw_wp_form_preview .p-contact-form__pickup').html());
-  if (area.indexOf('不要') != -1) {
-    $('.p-contact-form__pickup--op').hide();
-  }
-});
 
 
 //お問い合わせフォームのエラー操作(該当箇所にis-errorを付与、エラーメッセージの出し入れ)
@@ -425,9 +419,3 @@ jQuery(function ($) {
   }
 });
 
-
-
-/*********************************************************
- * rellax.js
- *********************************************************/
-var rellax = new Rellax('.rellax', {center: true});

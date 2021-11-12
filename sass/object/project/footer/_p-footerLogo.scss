@@ -48,7 +48,7 @@ animation-delay: calc(0.1s * var(--i));
   30%
   {
     color: #fff;
-    filter: blur(1px) hue-rotate(360deg);
+    filter: blur(0) hue-rotate(360deg);
     text-shadow: 0 0 10px $neon-color,
     0 0 20px $neon-color,
     0 0 30px $neon-color,
@@ -70,7 +70,7 @@ animation-delay: calc(0.1s * var(--i));
   70%
   {
     color: #fff;
-    filter: blur(1px) hue-rotate(360deg);
+    filter: blur(0) hue-rotate(360deg);
     text-shadow: 0 0 10px $neon-color,
     0 0 20px $neon-color,
     0 0 30px $neon-color,

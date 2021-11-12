@@ -4,7 +4,12 @@ position: relative;
 
 .p-top-content__inner{}
 
-.p-top-content__wrapper {}
+.p-top-content__wrapper {
+  margin-top: rem(48);
+  @include mq() {
+    margin-top: initial;
+  }
+}
 
 .p-top-content__list {
   display: grid;

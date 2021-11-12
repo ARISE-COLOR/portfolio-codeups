@@ -12,14 +12,15 @@ $_HEADER['description'] = wp_trim_words(strip_shortcodes($post->post_content), 5
 $_HEADER['og_image'] = get_the_post_thumbnail_url($post->ID);
 
 //ページタイトルを取得
-if (is_single() || is_page()) {
-  $_HEADER['title'] = (get_the_title($post->ID)) ? get_the_title($post->ID) : get_bloginfo('name');
+if(is_front_page()) {
+  $_HEADER['title'] =  get_bloginfo('name');
+} elseif (is_single() || is_page()) {
+  $_HEADER['title'] = (get_the_title($post->ID)) ? get_the_title($post->ID)."：". get_bloginfo('name'): get_bloginfo('name');
 } else {
   $_HEADER['title'] = get_bloginfo('name');
 }
 
 $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータとして付与（OGPのキャッシュ対策）
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +35,6 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
   <title><?php echo esc_html($_HEADER['title']); ?></title>
   <meta name="description" content="<?php bloginfo('description') ?>" />
   <meta name="keywords" content="キーワード" />
-  <meta name=”robots” content=”noindex”>
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#333333">
   <!-- ogp -->
@@ -43,7 +43,7 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
   <meta property="og:url" content="<?php echo esc_html($_HEADER['url']); ?>" />
   <meta property="og:image" content="<?php echo esc_html($_HEADER['og_image'] . $og_image); ?>" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
-  <meta property="og:description" content="<?php echo esc_html($_HEADER['description']); ?>" />
+  <meta property="og:description" content="<?php bloginfo('description') ?>" />
   <!-- ファビコン -->
   <link rel="”icon”" href="" />
   <!-- Web font -->
@@ -56,7 +56,7 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
   <!-- swiper.js -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script text="" src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="//cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
   <?php wp_head(); ?>
 </head>
@@ -79,10 +79,9 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
       <!-- ヘッダーロゴ -->
       <section class="p-header-logo">
         <a href="<?php echo esc_url(home_url()); ?>">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/logo.svg" alt="仮ロゴ">
           <div class="p-header-logo__title">
-            <h1>Web制作アライズカラー</h1>
-            <p>ポートフォリオサイト</p>
+            <span>Web制作アライズカラー</span>
+            <span>ポートフォリオサイト</span>
           </div>
         </a>
       </section>
@@ -108,7 +107,7 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
 
       <!-- ドロワーメニュー -->
       <div class="p-header__menu">
-        <button class="c-drawer-menu js-drawer" aria-label="メニュー" aria-controls="nav" aria-expanded="false">
+        <button class="c-drawer-menu js-drawer" aria-label="メニュー" aria-controls="nav" aria-expanded="false" tabindex="1" accesskey="m">
           <span></span>
           <span></span>
           <span></span>
@@ -144,10 +143,10 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
           </div>
 
           <div class="p-top-mv__titlebox">
-            <h2 class="p-top-mv__title">サンプルサイト</h2>
+            <h1 class="p-top-mv__title"><span>&nbsp;アライズカラー&nbsp;</span><span>&nbsp;サンプルサイト&nbsp;</span></h1>
             <div class="p-top-mv__subtitle">
               <p>当サイトはWordPressオリジナルテーマをgulp環境にて作成致しました。</p>
-              <p>デザインはオリジナルではございませんが、模範コードやサンプルコードがないデザインカンプを使用しておりますため、コードは完全オリジナルです。</p>
+              <p>デザインオリジナルではございませんが、模範コードがないデザインカンプを使用しておりますため、コードは完全オリジナルです。</p>
               <!-- <p>別途HTML版で、ピクセルパーフェクトで作成したものもございます。（トップページのみ）</p> -->
               <!-- <span>こちらの画像は</span><span>Smart Custom Fieldsにて、</span>
               <span>変更や追加ができるように</span><span>設定しています。</span><br>
@@ -163,7 +162,7 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
           </div>
         </div>
       </section>
-    <?php elseif (is_singular('works') || is_singular('blog')) : ?>
+    <?php elseif (is_singular('works') || is_singular('blog') || is_singular('post')) : ?>
       <!-- パンくずリスト -->
       <div class="l-breadcrumbs__single">
         <div class="l-inner">
@@ -183,7 +182,7 @@ $og_image .= '?' . time(); // UNIXTIMEのタイムスタンプをパラメータ
           </div>
 
           <div class="p-page-head__container">
-            <h2 class="p-page-head__title"><?php echo get_main_title(); ?></h2>
+            <h1 class="p-page-head__title"><?php echo get_main_title(); ?></h1>
           </div>
         </div>
       </section>

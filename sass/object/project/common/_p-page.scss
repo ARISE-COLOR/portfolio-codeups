@@ -3,29 +3,41 @@
 .p-page__inner {}
 
 .p-page__content h2 {
-  display: block;
-  font-size: rem(40);
+  display: inline-block;
+  font-size: rem(24);
   font-weight: $bold;
   padding: 0 rem(4);
-  border-left: rem(10) solid $title-color;
-  background-color: rgba($color: $title-color, $alpha: 0.1);
+  border-bottom: 6px double $title-color;
+  @include mq() {
+    font-size: rem(36);
+  }
 }
 
 .p-page__content h3 {
   display: inline-block;
-  font-size: rem(30);
+  font-size: rem(20);
   font-weight: $medium;
-  border-bottom: rem(5) solid $title-color;
+  border-left: rem(5) solid $title-color;
+  @include mq() {
+    font-size: rem(30);
+  }
 }
 
 .p-page__content h4 {
   display: inline-block;
-  font-size: rem(26);
+  font-size: rem(18);
   font-weight: $medium;
   border-bottom: rem(5) solid $title-color;
+  @include mq() {
+    font-size: rem(26);
+  }
 }
 
 .p-page__content p {
   margin-top: rem(30);
   line-height: 2;
+  font-size: rem(16);
+  @include mq() {
+  font-size: rem(18);
+  }
 }

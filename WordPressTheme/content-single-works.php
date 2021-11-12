@@ -1,6 +1,6 @@
 <section class="p-works-header">
   <h1 class="p-works-header__title">
-    <?php the_title(); ?>様　制作実績
+    <?php the_title(); ?>
   </h1>
 </section>
 

@@ -9,8 +9,10 @@
   padding: rem(8) rem(25);
   border-radius: 32px;
   margin-top: rem(50);
+  font-size: rem(18);
   @include mq() {
     margin-left: rem(38);
+    font-size: rem(24);
   }
 }
 

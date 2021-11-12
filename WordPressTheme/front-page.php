@@ -6,7 +6,7 @@
     <span class="p-section-header__title--en">news</span>
     <span class="p-section-header__title--ja">お知らせ</span>
   </h2>
-  <article class="p-top-news__inner l-inner p-newsBlock">
+  <div class="p-top-news__inner l-inner p-newsBlock">
     <ul class="p-newsBlock__list">
 
       <?php
@@ -41,7 +41,7 @@
       <a href="<?php echo home_url('news'); ?>" class="c-btn">すべて見る</a>
     </div>
 
-  </article>
+  </div>
 </section>
 
 <!-- 事業内容『CONTENT』 -->
@@ -55,7 +55,7 @@
       <span class="p-section-header__title--ja">事業内容（サンプル）</span>
     </h2>
 
-    <div class="l-top-section__wrapper p-top-content__wrapper">
+    <div class="p-top-content__wrapper">
       <ul class="p-top-content__list">
 
         <?php
@@ -112,7 +112,7 @@
 
   <div class="p-top-works__inner">
     <h2 class="p-top-content__header p-section-header l-inner">
-      <span class="p-section-header__title--en">works</span>
+      <span class="p-section-header__title--en p-section-header__title--right">works</span>
       <span class="p-section-header__title--ja">制作実績(サンプル）</span>
     </h2>
 
@@ -138,7 +138,7 @@
                     <figure class="p-top-works__slide-img" style="background-image: url('<?php echo esc_html(wp_get_attachment_image_url($workgroup[0]['works__img'], 'full')); ?>');" data-swiper-parallax-x="90%">
                     </figure>
                     <div class="p-top-works__slide-heading">
-                      <h3 class="p-top-works__slide-title"><?php the_title() ?></h3>
+                      <h4 class="p-top-works__slide-title"><?php the_title() ?></h4>
                       <p class="p-top-works__slide-text" data-swiper-parallax-x="30%" data-swiper-parallax-opacity="0">
                         <?php echo get_flexible_excerpt(40); ?>
                       </p>
@@ -153,7 +153,7 @@
                   <figure class="p-top-works__slide-img" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/works1@2x.jpg')" data-swiper-parallax-x="90%">
                   </figure>
                   <div class="p-top-works__slide-heading">
-                    <h3 class="p-top-works__slide-title">只今記事を準備中です。</h3>
+                    <h4 class="p-top-works__slide-title">只今記事を準備中です。</h3>
                     <p class="p-top-works__slide-text" data-swiper-parallax-x="30%" data-swiper-parallax-opacity="0">
                       公開まで、今しばらくお待ちください。
                     </p>
@@ -222,11 +222,11 @@
 <section class="l-top-section p-top-blog js-fadeInTrigger">
   <div class="p-top-blog__inner l-inner">
     <h2 class="p-top-blog__header p-section-header">
-      <span class="p-section-header__title--en">blog</span>
+      <span class="p-section-header__title--en p-section-header__title--right">blog</span>
       <span class="p-section-header__title--ja">ブログ</span>
     </h2>
 
-    <article class="l-top-section__wrapper p-top-blog__body">
+    <div class="l-top-section__wrapper p-top-blog__body">
       <ul class="p-top-blog__list p-blog-cards">
 
         <?php
@@ -249,7 +249,7 @@
       <div class="l-top-btn__center p-top-blog__btnblock">
         <a href="<?php echo home_url('blog'); ?>" class="c-btn">詳しく見る</a>
       </div>
-    </article>
+    </div>
   </div>
 </section>
 

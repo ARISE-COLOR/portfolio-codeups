@@ -58,18 +58,23 @@
 
 .p-top-mv__titlebox {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-40%) translateX(-50%);
 
   z-index: 1;
   width: 100%;
   // パーフェクトピクセル調整
   // padding-left: rem(2);
+  @include mq() {
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
 }
 
 .p-top-mv__title {
-  font-size: rem(28);
+  font-size: rem(30);
   text-align: center;
   font-weight: $bold;
   letter-spacing: rem(0.45);
@@ -80,10 +85,14 @@
   }
 }
 
+.p-top-mv__title span {
+  display: inline-block;
+}
+
 .p-top-mv__subtitle {
   margin-top: rem(13);
   padding: 0 rem(30);
-  font-size: rem(18);
+  font-size: rem(16);
   text-align: left;
   letter-spacing: rem(0.5);
   line-height: 1.5;

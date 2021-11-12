@@ -2,3 +2,10 @@
 
 .p-archive__inner{}
 
+.p-archive__title {
+  text-align: center;
+  font-size: rem(24);
+  @include mq() {
+    font-size: rem(36);
+  }
+}

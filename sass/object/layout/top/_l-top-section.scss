@@ -5,10 +5,3 @@
   }
 }
 
-.l-top-section__wrapper {
-  margin-top: rem(48);
-  @include mq() {
-    margin-top: initial;
-  }
-}
-

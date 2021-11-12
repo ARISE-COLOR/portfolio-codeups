@@ -29,7 +29,7 @@ function my_script_init()
   wp_enqueue_style('my', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.1', 'all');
 
   wp_enqueue_script('my-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0.1', true);
-  wp_enqueue_script('rellax', get_template_directory_uri() . '/assets/js/rellax.min.js', array(), true);
+  // wp_enqueue_script('rellax', get_template_directory_uri() . '/assets/js/rellax.min.js', array('my-script'), true);
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
 
@@ -187,7 +187,7 @@ function get_main_image()
   elseif (is_post_type_archive('blog') || is_tax('subject')) :
     return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/blog0@2x.jpg" />';
 
-  elseif (is_archive() || is_singular('post')) :
+  elseif (is_archive()) :
     return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/news@2x.jpg" />';
 
   elseif (is_search() || is_404()) :
@@ -217,19 +217,19 @@ function get_card_image($categoryName = null)
 
     //画像登録されていない場合、ダミーとしてworks0.jpgを表示
     else :
-      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/works0.jpg" />';
+      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/works0.jpg" alt="サムネイル画像" />';
     endif;
 
   elseif (is_post_type_archive('blog') || is_tax('subject') || $categoryName == 'blog') :
     if (has_post_thumbnail($post->ID)) :
       return get_the_post_thumbnail($post->ID, 'full');
-    //画像登録されていない場合、ダミーとしてworks0.jpgを表示
+    //画像登録されていない場合、ノーイメージ画像を表示
     else :
-      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/noimg.png" />';
+      return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/noimg.png" alt="登録画像無し" />';
     endif;
 
   else :
-    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/works0.jpg" />';
+    return '<img src="' . esc_url(get_template_directory_uri()) . '/assets/img/noimg.png" alt="登録画像無し" />';
   endif;
 }
 
@@ -572,3 +572,8 @@ function custom_the_posts_pagination( $template ) {
 	return $template;
 }
 add_filter( 'navigation_markup_template', 'custom_the_posts_pagination' );
+
+/****************************************************************
+* wp_headのtitleタグを削除
+*****************************************************************/
+remove_action('wp_head', '_wp_render_title_tag', 1);

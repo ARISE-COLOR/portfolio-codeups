@@ -9,11 +9,22 @@
 }
 
 .p-contact-form__table tr {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  @include mq() {
+    position: relative;
+    display: inherit;
+  }
+}
+
+.p-contact-form__table tr + tr {
+  margin-top: rem(20);
+  @include mq() {
+    margin-top: initial;
+  }
 }
 
 .p-contact-form__table th {
-  position: initial;
   width: rem(200);
   text-align: left;
   @include mq() {
