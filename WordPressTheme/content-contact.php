@@ -3,7 +3,7 @@
   <div class="p-contact-section__inner l-inner">
     <div class="p-contact-section__wrapper">
       <h2 class="p-contact-section__header p-section-header">
-        <span class="p-section-header__title--en">contact</span>
+        <span class="p-section-header__title--en p-section-header__title--left">contact</span>
         <span class="p-section-header__title--ja">お問い合わせ</span>
       </h2>
 

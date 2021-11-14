@@ -29,9 +29,11 @@
 }
 
 .p-top-works__wrapper {
+  margin-top: rem(48);
   position: relative;
   z-index: 2;
   @include mq() {
+    margin-top: initial;
     display: flex;
     align-items: center;
     padding-top: rem(82);

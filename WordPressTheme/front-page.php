@@ -3,7 +3,7 @@
 <!-- 記事見出し-->
 <section id="top-news" class="l-top-section p-top-news js-fadeInTrigger">
   <h2 class="p-top-content__header p-section-header l-inner">
-    <span class="p-section-header__title--en">news</span>
+    <span class="p-section-header__title--en p-section-header__title--left">news</span>
     <span class="p-section-header__title--ja">お知らせ</span>
   </h2>
   <div class="p-top-news__inner l-inner p-newsBlock">
@@ -51,7 +51,7 @@
 
   <div class="p-top-content__inner">
     <h2 class="p-top-content__header p-section-header l-inner">
-      <span class="p-section-header__title--en">content</span>
+      <span class="p-section-header__title--en p-section-header__title--left">content</span>
       <span class="p-section-header__title--ja">事業内容（サンプル）</span>
     </h2>
 
@@ -113,11 +113,11 @@
   <div class="p-top-works__inner">
     <h2 class="p-top-content__header p-section-header l-inner">
       <span class="p-section-header__title--en p-section-header__title--right">works</span>
-      <span class="p-section-header__title--ja">制作実績(サンプル）</span>
+      <span class="p-section-header__title--ja">制作実績（サンプル）</span>
     </h2>
 
     <div class="p-top-works__body">
-      <div class="l-top-section__wrapper p-top-works__wrapper l-inner">
+      <div class="p-top-works__wrapper l-inner">
         <div class="p-top-works__swiper">
 
           <div class="swiper-container js-swiper-works">
@@ -189,12 +189,12 @@
 <section class="l-top-section p-top-overview js-fadeInTrigger">
   <div class="p-top-overview__inner">
     <h2 class="p-top-overview__header p-section-header l-inner">
-      <span class="p-section-header__title--en">overview</span>
+      <span class="p-section-header__title--en p-section-header__title--left">overview</span>
       <span class="p-section-header__title--ja">企業概要（サンプル）</span>
     </h2>
 
     <div class="p-top-overview__body">
-      <div class="l-top-section__wrapper p-top-overview__wrapper l-inner">
+      <div class="p-top-overview__wrapper l-inner">
         <div class="p-top-overview__imgblock">
           <figure class="p-top-overview__img">
             <img class="rellax u-hidden-tab" src="<?php echo esc_url(get_the_post_thumbnail_url('27')); ?>">
@@ -226,7 +226,7 @@
       <span class="p-section-header__title--ja">ブログ</span>
     </h2>
 
-    <div class="l-top-section__wrapper p-top-blog__body">
+    <div class="p-top-blog__wrapper">
       <ul class="p-top-blog__list p-blog-cards">
 
         <?php

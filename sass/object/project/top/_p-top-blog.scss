@@ -4,7 +4,12 @@
 
 .p-top-blog__header {}
 
-.p-top-blog__body {}
+.p-top-blog__wrapper {
+  margin-top: rem(48);
+  @include mq() {
+    margin-top: initial;
+  }
+}
 
 .p-top-blog__list {}
 

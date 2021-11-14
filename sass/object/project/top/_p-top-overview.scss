@@ -22,7 +22,9 @@
 }
 
 .p-top-overview__wrapper {
+  margin-top: rem(48);
   @include mq() {
+    margin-top: initial;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
